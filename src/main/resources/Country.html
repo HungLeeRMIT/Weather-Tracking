@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Country.css">
+    <script  src="HeadAndFooter.js"></script>
+    <script  src="Chart.js"></script>
+    <script  src="D3.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Country</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-and-title">
+                <a href="/" class="logo-title-link">
+                    <div class="logo">
+                        <img src="logo.png" alt="Climate Insight Logo">
+                    </div>
+                    <div class="title">
+                        <h1>Climate Insight</h1>
+                    </div>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a id="home-link" href="/">Home</a></li>
+                <li class="dropdown">
+                    <a id="detail-link" href="Population.html">Detail View</a>
+                    <li class="dropdown">
+                        <a id="analytic-tools-link" href="javascript:void(0);">Analytic Tools</a>
+                        <div class="dropdown-content">
+                            <a href="CompareData.html">Compare Data</a>
+                            <a href="FindSimilar.html">Find Similar</a>
+                        </div>
+                    </li>
+                </li>
+                <li><a id="mission-link" href="Mission.html">Mission</a></li>
+                <li><a id="forecast-link" href="Forecast.html">Forecast</a></li>
+                <li><a id="FAQ-link" href="FAQ.html">FAQ</a></li>
+                <li><a id="resources" href="Resources.html">Resources</a></li>
+                <li><a id="about-link" href="AboutUs.html">About Us</a></li>
+            </ul>
+            <div class="user-auth">
+                <div class="user-icon-dropdown">
+                    <img src="usericon.png" alt="User" class="user-avatar-img" onclick="toggleUserDropdown()">
+                    <div id="userDropdown" class="user-dropdown-content">
+                        <a href="Sign_In.html">Sign In</a>
+                        <a href="Sign_Up.html">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+            <div class="responsive-menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-heading">
+        <h2>Temperature Changes Over Time</h2>
+    </div>
+
+    <div class="detail-view-container">
+        <aside class="side-nav">
+            <form action="/searchCountry" method='post'>
+                <input type="text" name="search" placeholder="Enter a country">
+                <input type="submit" value="Search">
+            </form>
+
+            <div class="sorting-buttons">
+                <button class="sort-btn" id="sort-name">
+                    <i class="fas fa-sort-alpha-down"></i> Name
+                </button>
+                <button class="sort-btn" id="sort-temperature">
+                    <i class="fas fa-thermometer-half"></i> Temperature
+                </button>
+                <button class="sort-btn" id="sort-population">
+                    <i class="fas fa-users"></i> Population
+                </button>
+            </div>
+
+            <form action="/chooseCountry" method="post">
+                <select class="country-list" name="country" size="17" onchange="this.form.submit()">
+                    <option th:each="country: ${countries}" th:value="${country}" th:text="${country}"></option>
+                </select>
+                <!-- Add more countries as needed -->
+                <!-- Placeholder for API-generated country list -->
+            </form>
+        </aside>
+
+        <section class="content-area">
+            <div class="info-box">
+                <h1 id="country-name" th:if="${selectedCountry} == null" th:text="'Select a Country'"></h1>
+                <h1 id="country-name" th:if="${selectedCountry} != null" th:text="${selectedCountry}"></h1>
+                <div class="underline"></div>
+                <nav class="info-nav">
+
+                <form action="/chooseTable" method="post" >
+                    <button type="submit" name="poptem" class="info-btn" value="Population" id="population-btn">Population</button>
+                    <button type="submit" name="poptem" class="info-btn" value="Temperature" id="temperature-btn">Temperature</button>
+                </form>
+                </nav>
+                <div class="filter-area">
+                    <h2 class="filter-heading">Compare data between 2 years</h2>
+                    <div class="year-selection">
+                        <div class="year-dropdown">
+                            <label style="display:inline-block;" for="start-year">Selected start year: <h4 style="display: inline; margin: 0;" th:text="${selectedSYears}"> </h4> </label>
+                            <form action="/getStartYear" method="post">
+                            <select id="start-year" name="startYears" onchange="this.form.submit()">
+                                <option value=""> Select start year </option>
+                                <option th:each="year : ${startYears}" th:text="${year}" th:value="${year}" ></option>
+                                <!-- Placeholder for API-generated year options -->
+                            </select>
+                            </form>
+                        </div>
+                        <div class="year-dropdown">
+                            <label style="display:inline-block;" for="end-year">Selected end year: <h4 style="display: inline; margin: 0;" th:text="${selectedEYears}"> </h4> </label>
+                            <form action="/getEndYear" method="post">
+                            <select id="end-year" name="endYears" onchange="this.form.submit()">
+                                <option value=""> Select end year </option>
+                                <option th:each="year : ${endYears}" th:text="${year}" th:value="${year}"></option>
+                                <!-- Placeholder for API-generated year options -->
+                            </select>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="underline"></div>
+                <div id="population-info" class="info-content">
+                    <!--<nav class="data-view-nav">
+                        <button class="data-view-btn" id="population-table-btn">Table</button>
+                        <button class="data-view-btn" id="population-chart-btn">Chart</button>
+                    </nav>-->
+                    <!-- Population data table -->
+                    <div th:if="${table}=='Population'" id="population-data-table-area" class="data-table-area" >
+                        <table id="population-data-table">
+                            <thead>
+                                <tr>
+                                    <th>Year</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="pop : ${countryPop}">
+                                    <td th:text="${pop.year}"></td>
+                                    <td th:text="${pop.population}"></td>
+                                </tr>
+                                <!-- Population data rows will be inserted here by API -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Placeholder for population chart -->
+                    <div id="population-chart-area" class="data-chart-area" >
+                        <!-- Chart will be inserted here via API later -->
+                    </div>
+                </div>
+                <div th:if="${table}=='Temperature'" id="temperature-info" class="info-content">
+                    <!---<nav class="data-view-nav">
+                        <button class="data-view-btn" id="temperature-table-btn">Table</button>
+                        <button class="data-view-btn" id="temperature-chart-btn">Chart</button>
+                    </nav>-->
+                    <!-- Temperature data table -->
+                    <div id="temperature-data-table-area" class="data-table-area" >
+                        <table id="temperature-data-table">
+                            <thead>
+                                <tr>
+                                    <th>Year</th>
+                                    <th>Average</th>
+                                    <th>Min</th>
+                                    <th>Max</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="temp : ${countryTemp}">
+                                    <td th:text="${temp.year}"></td>
+                                    <td th:text="${temp.avgTemperature}"></td>
+                                    <td th:text="${temp.minTemperature}"></td>
+                                    <td th:text="${temp.maxTemperature}"></td>
+                                </tr>
+                                <!-- Temperature data rows will be inserted here by API -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Placeholder for temperature chart -->
+                    <div id="temperature-chart-area" class="data-chart-area" style="display: none;">
+                        <!-- Chart will be inserted here via API later -->
+                        <p>Temperature Chart Placeholder</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Organisation</h4>
+                    <ul>
+                        <li><a href="/">Overview</a></li>
+                        <li><a href="Mission.html">Mission</a></li>
+                        <li><a href="Resources.html">Resources</a></li>
+                        <li><a href="AboutUs.html">About us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get help</h4>
+                    <ul>
+                        <li><a href="FAQ.html#how-to-use-section">How it works</a></li>
+                        <li><a href="FAQ.html">FAQ</a></li>
+                        <li><a href="Forecast.html">Forecast</a></li>
+                        <li><a href="AboutUs.html">Contact us</a></li>
+                        <li><a href="Payment.html">payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Event</h4>
+                    <ul>
+                        <li><a href="Event.html">Charity</a></li>
+                        <li><a href="Event.html">Blue Sea </a></li>
+                        <li><a href="Event.html">Green Globe</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/satrmithanoi"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.rmit.edu.vn/vi"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/rmituniversityvietnam/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/school/rmit-university-vietnam/?originalSubdomain=vn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="updates-section">
+                <form>
+                    <div style="color:white"><h3>Get update</h3> </div>
+                    <input type="email" placeholder="Enter your email " required>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <p style="color: #e91e63;">© Copyright Team-HN-G03-COSC3056 2024. All Rights Reserved | Designed and Developed by Team-HN-G03-COSC3056</p>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>

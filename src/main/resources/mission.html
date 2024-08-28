@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Mission.css">
+    <script  src="HeadAndFooter.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <title>Mission Statement</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-and-title">
+                <a href="/" class="logo-title-link">
+                    <div class="logo">
+                        <img src="logo.png" alt="Climate Insight Logo">
+                    </div>
+                    <div class="title">
+                        <h1>Climate Insight</h1>
+                    </div>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a id="home-link" href="/">Home</a></li>
+                <li class="dropdown">
+                    <a id="detail-link" href="Population.html">Detail View</a>
+                    <li class="dropdown">
+                        <a id="analytic-tools-link" href="javascript:void(0);">Analytic Tools</a>
+                        <div class="dropdown-content">
+                            <a href="CompareData.html">Compare Data</a>
+                            <a href="FindSimilar.html">Find Similar</a>
+                        </div>
+                    </li>
+                </li>
+                <li><a id="mission-link" href="Mission.html">Mission</a></li>
+                <li><a id="forecast-link" href="Forecast.html">Forecast</a></li>
+                <li><a id="FAQ-link" href="FAQ.html">FAQ</a></li>
+                <li><a id="resources" href="Resources.html">Resources</a></li>
+                <li><a id="about-link" href="AboutUs.html">About Us</a></li>
+            </ul>
+            <div class="user-auth">
+                <div class="user-icon-dropdown">
+                    <img src="usericon.png" alt="User" class="user-avatar-img" onclick="toggleUserDropdown()">
+                    <div id="userDropdown" class="user-dropdown-content">
+                        <a href="Sign_In.html">Sign In</a>
+                        <a href="Sign_Up.html">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+            <div class="responsive-menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="mission-statement">
+        <div class="mission-header">
+            <h2>Mission Statement</h2>
+        </div>
+        <div class="mission-content">
+            <div class="mission-section">
+                <button class="accordion">Commitment</button>
+                <div class="panel">
+                    <ul>
+                        <li><p>At "Climate Insights," we are committed to fostering a deeper understanding of our planet's changing climate. Our mission is to empower governments, scientists, and the general public with the tools and knowledge needed to analyze patterns of change in ocean and land temperatures spanning a 260-year period.</p></li>
+                        <li><p>We pledge to provide comprehensive and accessible data from across the globe, encompassing various countries, cities, and states. Our platform is designed to cater to both high-level analysis for informed decision-making and a broader overview to engage and educate a wide audience.</p></li>
+                        <li><p>At the core of our website are datasets on temperature observations and population count based on their geography. The temperature dataset will span from 1750-2013 on the scale of worldwide, country, state, and city while the population dataset from 1760-2013 on the scale of worldwide and country.</p></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mission-section">
+                <button class="accordion">Core Values</button>
+                <div class="panel">
+                    <ol>
+                        <li>Data Integrity: We are dedicated to sourcing and delivering accurate, reliable, and up-to-date climate data to ensure that all users can make informed assessments.</li>
+                        <li>User Empowerment: We aim to empower governments, scientists, and the general public with the knowledge and insights necessary to address the critical issue of climate change effectively.</li>
+                        <li>Global Perspective: We provide a holistic view of climate trends, considering diverse geographical regions to facilitate a comprehensive understanding of our planet's climate dynamics.</li>
+                        <li>Transparency: We are committed to transparency in data sources, methodologies, and presentation, ensuring that our users have full confidence in the information we provide.</li>
+                        <li>Education: We believe in the power of knowledge and are dedicated to educating our users about climate change science, its implications, and the actions needed to mitigate its impact.</li>
+                        <li>Collaboration: We encourage collaboration among governments, scientists, and the public to work together towards climate resilience and sustainability.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Organisation</h4>
+                <ul>
+                    <li><a href="/">Overview</a></li>
+                    <li><a href="Mission.html">Mission</a></li>
+                    <li><a href="Resources.html">Resources</a></li>
+                    <li><a href="AboutUs.html">About us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get help</h4>
+                <ul>
+                    <li><a href="FAQ.html#how-to-use-section">How it works</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                    <li><a href="Forecast.html">Forecast</a></li>
+                    <li><a href="AboutUs.html">Contact us</a></li>
+                    <li><a href="Payment.html">payment options</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Event</h4>
+                <ul>
+                    <li><a href="Event.html">Charity</a></li>
+                    <li><a href="Event.html">Blue Sea </a></li>
+                    <li><a href="Event.html">Green Globe</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>follow us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/satrmithanoi"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.rmit.edu.vn/vi"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/rmituniversityvietnam/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/school/rmit-university-vietnam/?originalSubdomain=vn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="updates-section">
+            <form>
+                <div style="color:white"><h3>Get update</h3> </div>
+                <input type="email" placeholder="Enter your email " required>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <p style="color: #e91e63;">© Copyright Team-HN-G03-COSC3056 2024. All Rights Reserved | Designed and Developed by Team-HN-G03-COSC3056</p>
+        </div>
+    </div>
+</footer>
+    
+    <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            } 
+        });
+    }
+});
+  </script>
+</body>
+</html>

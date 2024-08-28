@@ -1,0 +1,191 @@
+/* Main section styling */
+.find-country-section {
+    background-color: #fff; /* White background color */
+    color: #333; /* Darker text color */
+    padding: 40px 0; /* Top and bottom padding */
+}
+
+/* Section title */
+.section-title {
+    font-size: 24px; /* Larger font size for the title */
+    text-align: center;
+    margin-bottom: 40px; /* Space below the title */
+    color: #333; /* Dark text color for better contrast */
+}
+
+/* Filter Group Styling */
+.filter-group {
+    display: flex;
+    flex: 1; /* Allow each filter group to take equal width */
+    justify-content: center; /* Center the content within each group */
+    margin: 0 10px; /* Add some margin between the filter groups */
+}
+
+.filter-group label {
+    margin-bottom: 5px;
+    color: #333; /* Dark text color for labels */
+}
+
+.filter-group input[type="number"] {
+    padding: 10px;
+    margin: 0 5px;
+    border: 1px solid #ddd; /* Lighter border for inputs */
+    border-radius: 10px; /* Rounded corners for inputs */
+    color: #333; /* Dark text color for input */
+    background-color: #fff; /* White background for input */
+    width: 100px; /* Fixed width for inputs */
+}
+
+.range-to, .filter-or {
+    margin: 0 10px; /* Add some margin around the 'to' and 'OR' text */
+}
+
+.filter-or {
+    color: #333; /* Dark text color */
+    margin: 0 10px;
+    font-size: 20px; /* Larger font size for OR */
+}
+
+.filter-box {
+    display: flex;
+    justify-content: space-between; /* This will spread out the children evenly */
+    align-items: center;
+    background-color: #eee; /* Light grey background for filter box */
+    padding: 10px 20px; /* Add padding on the left and right */
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    margin: 0 auto; /* Center the filter box if needed */
+    max-width: 80%; /* Set a max-width to avoid the box stretching too wide */
+}
+
+.filter-label {
+    margin-right: 0; /* Remove the margin-right as justify-content will handle the spacing */
+    white-space: nowrap; /* Keep the label on one line */
+}
+
+.filter-box .filter-btn {
+    white-space: nowrap; /* Keep the button label on one line */
+    padding: 10px 20px;
+    border-radius: 10px; /* Rounded corners for the button */
+    background-color: #007bff; /* Blue background for the button */
+    border: none;
+    color: #fff; /* White text color */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition for hover effect */
+}
+
+.filter-box .filter-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Data table container styling */
+.data-table-container {
+    border-radius: 20px; /* Rounded corners for the table container */
+    overflow: hidden; /* Hide overflow */
+    margin-top: 20px; /* Space above the table */
+    background-color: #fff; /* White background color for the table container */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* subtle shadow to lift the table off the page */
+}
+
+/* Table header styling */
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa; /* Slightly different background for header to distinguish */
+    border-bottom: 2px solid #dee2e6; /* Visible border line for header */
+}
+
+.table-header h3 {
+    margin: 0;
+    font-weight: 600; /* Slightly bolder font for the header */
+    color: #212529; /* Dark text color */
+}
+
+
+.sort-dropdown select {
+    padding: 10px 30px 10px 20px; /* Padding to make room for the icon */
+    border-radius: 20px;
+    background-color: #fff; /* White background for dropdown */
+    border: 1px solid #dee2e6; /* Visible border for dropdown */
+    color: #212529; /* Dark text color */
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Collapses table borders */
+    background-color: #fff; /* White background color for table */
+}
+
+table th, table td {
+    padding: 15px; /* Padding inside table cells */
+    text-align: left; /* Align text to the left in table cells */
+    border-bottom: 1px solid #dee2e6; /* Visible border for table rows */
+}
+
+table th {
+    background-color: #e9ecef; /* Light grey background for table headers */
+    color: #212529; /* Dark text color for headers */
+    font-weight: 600; /* Bolder font weight for header text */
+}
+
+/* Enhance visibility of the last row border */
+table tbody tr:last-child td {
+    border-bottom: 2px solid #dee2e6;
+}
+
+  
+  /* Responsive adjustments */
+  @media only screen and (max-width: 768px) {
+    .filter-box {
+        flex-direction: column;
+        max-width: 100%; /* On smaller screens, allow the filter box to be full width */
+        padding: 20px; /* Increase padding for a larger touch area on mobile */
+    }
+
+  
+    .filter-box input[type="text"] {
+      width: 100%; /* Full width for the input field on small screens */
+      margin-bottom: 20px; /* Space below the input field */
+    }
+  
+    .filter-box .filter-btn {
+      width: 100%; /* Full width for the button on small screens */
+    }
+  
+    .table-header {
+      flex-direction: column; /* Stack the elements on small screens */
+      text-align: center; /* Center the text */
+    }
+  
+    .sort-dropdown select {
+      width: 100%; 
+    }
+    .filter-box .filter-btn {
+        width: 100%; /* Full width for the button on small screens */
+    }
+
+    .filter-group {
+        justify-content: space-between; /* On mobile, spread out the inputs within the group */
+        margin: 10px 0; /* Add margin-top and margin-bottom for vertical spacing */
+    }
+
+    .filter-btn {
+        margin-top: 10px;
+    }
+
+    .filter-or {
+        margin-top: 10px;
+    }
+    .range-to, .filter-or {
+        margin: 0 5px; /* Reduce margin for 'to' and 'OR' on smaller screens */
+    }
+
+    .filter-box .filter-btn {
+        width: auto; /* Allow the button to shrink on smaller screens */
+        margin-top: 10px; /* Add some space above the button */
+    }
+}
+  

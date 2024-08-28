@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Event.css">
+    <link rel="stylesheet" href="style.css">
+    <script  src="HeadAndFooter.js"></script>
+    <script  src="Event.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://unicons.iconscout.com/release/v2.1.9/css/unicons.css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900">
+    <title>Event</title>
+
+
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo-and-title">
+                <a href="/" class="logo-title-link">
+                    <div class="logo">
+                        <img src="logo.png" alt="Climate Insight Logo">
+                    </div>
+                    <div class="title">
+                        <h1>Climate Insight</h1>
+                    </div>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a id="home-link" href="/">Home</a></li>
+                <li class="dropdown">
+                    <a id="detail-link" href="Population.html">Detail View</a>
+                    <li class="dropdown">
+                        <a id="analytic-tools-link" href="javascript:void(0);">Analytic Tools</a>
+                        <div class="dropdown-content">
+                            <a href="CompareData.html">Compare Data</a>
+                            <a href="FindSimilar.html">Find Similar</a>
+                        </div>
+                    </li>
+                </li>
+                <li><a id="mission-link" href="Mission.html">Mission</a></li>
+                <li><a id="forecast-link" href="Forecast.html">Forecast</a></li>
+                <li><a id="FAQ-link" href="FAQ.html">FAQ</a></li>
+                <li><a id="resources" href="Resources.html">Resources</a></li>
+                <li><a id="about-link" href="AboutUs.html">About Us</a></li>
+            </ul>
+            <div class="user-auth">
+                <div class="user-icon-dropdown">
+                    <img src="usericon.png" alt="User" class="user-avatar-img" onclick="toggleUserDropdown()">
+                    <div id="userDropdown" class="user-dropdown-content">
+                        <a href="Sign_In.html">Sign In</a>
+                        <a href="Sign_Up.html">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+            <div class="responsive-menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+
+    <section class="motivational-header">
+        <h2>Saving our World by Charity</h2>
+    </section>
+   
+
+    <div class="section over-hide">
+		<div class="container">
+			<div class="row full-height justify-content-center">
+				<div class="col-12 text-center align-self-center py-5">
+					<div class="section text-center py-5 py-md-0">
+			          	<input class="pricing" type="checkbox" id="pricing" name="pricing"/>
+			          	<label for="pricing"><span class="block-diff">Small<span class="float-right">Large </span></span></label>
+						<div class="card-3d-wrap mx-auto">
+							<div class="card-3d-wrapper">
+								<div class="card-front">
+									<div class="pricing-wrap">
+										<h4 class="mb-5">Blue sea</h4>
+										<h2 class="mb-2"><sup>$</sup>10 / 1<sup> m2 Coral</sup></h2>
+										<p class="mb-4">per person</p>
+										<p class="mb-1"><i class="uil uil-location-pin-alt size-22"></i></p>
+										<p class="mb-4">Globe</p>
+										<a href="Payment.html" class="link">Choose Payment</a>
+										<div class="img-wrap img-2">
+											<img src="https://assets.codepen.io/1462889/sea.png" alt="">
+										</div>
+										<div class="img-wrap img-1">
+											<img src="https://assets.codepen.io/1462889/kayak.png" alt="">
+										</div>
+										<div class="img-wrap img-3">
+											<img src="https://assets.codepen.io/1462889/water.png" alt="">
+										</div>
+										<div class="img-wrap img-6">
+											<img src="https://assets.codepen.io/1462889/Stone.png" alt="">
+										</div>
+			      					</div>
+			      				</div>
+								<div class="card-back">
+									<div class="pricing-wrap">
+										<h4 class="mb-5">Green Globe</h4>
+										<h2 class="mb-2"><sup>$</sup>10 / 3<sup>trees</sup></h2>
+										<p class="mb-4">per person</p>
+										<p class="mb-1"><i class="uil uil-location-pin-alt size-20"></i></p>
+										<p class="mb-4">Globe</p>
+										<a href="Payment.html" class="link">Choose Payment</a>
+										<div class="img-wrap img-2">
+											<img src="https://assets.codepen.io/1462889/grass.png" alt="">
+										</div>
+										<div class="img-wrap img-4">
+											<img src="https://assets.codepen.io/1462889/camp.png" alt="">
+										</div>
+										<div class="img-wrap img-5">
+											<img src="https://assets.codepen.io/1462889/Ivy.png" alt="">
+										</div>
+										<div class="img-wrap img-7">
+											<img src="https://assets.codepen.io/1462889/IvyRock.png" alt="">
+										</div>
+			      					</div>
+			      				</div>
+			      			</div>
+			      		</div>
+			      	</div>
+		      	</div>
+	      	</div>
+	    </div>
+	</div>
+  <div id="paymentModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <!-- You can use an iframe to embed `payment.html` or load it via JavaScript -->
+      <iframe src="Payment.html" frameborder="0"></iframe>
+    </div>
+  </div>
+<!-- partial -->
+<a id="back-button" href="/" style="position: relative; bottom: 10px;">Return Home</a>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Organisation</h4>
+                <ul>
+                    <li><a href="/">Overview</a></li>
+                    <li><a href="Mission.html">Mission</a></li>
+                    <li><a href="Resources.html">Resources</a></li>
+                    <li><a href="AboutUs.html">About us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get help</h4>
+                <ul>
+                    <li><a href="FAQ.html#how-to-use-section">How it works</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                    <li><a href="Forecast.html">Forecast</a></li>
+                    <li><a href="AboutUs.html">Contact us</a></li>
+                    <li><a href="Payment.html">payment options</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Event</h4>
+                <ul>
+                    <li><a href="Event.html">Charity</a></li>
+                    <li><a href="Event.html">Blue Sea </a></li>
+                    <li><a href="Event.html">Green Globe</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>follow us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/satrmithanoi"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.rmit.edu.vn/vi"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/rmituniversityvietnam/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/school/rmit-university-vietnam/?originalSubdomain=vn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="updates-section">
+            <form>
+                <div style="color:white"><h3>Get update</h3> </div>
+                <input type="email" placeholder="Enter your email " required>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <p style="color: #e91e63;">© Copyright Team-HN-G03-COSC3056 2024. All Rights Reserved | Designed and Developed by Team-HN-G03-COSC3056</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
+

@@ -1,0 +1,118 @@
+.view-by-country-heading {
+  text-align: center;
+  margin: 20px 0; /* Adjust margin as needed */
+  padding: 10px;
+  background-color: #ffffff; /* Light background color for the heading */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.view-by-country-heading h2 {
+  margin: 0;
+  padding: 0;
+  color: #333; /* Dark text color for contrast */
+  font-size: 24px; /* Adjust font size as needed */
+}
+
+/* Main container for dropdown and map */
+.content-container {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap as needed */
+}
+
+/* Dropdown container styles */
+.dropdown-container {
+  margin-bottom: 20px;
+  flex: 1 1 auto; /* Flex grow, shrink, and basis */
+  min-width: 250px; /* Minimum width of the dropdown container */
+  max-width: 300px; /* Maximum width before it wraps */
+  margin-right: 20px; /* Space between dropdown and map */
+}
+
+/* Map container styles */
+.map-container {
+  flex: 4 1 0; /* Larger flex-grow value allows the map to take up more space */
+  min-width: 300px; /* Minimum width of the map container */
+  height: 500px; /* Fixed height, or you can set to 100vh for full viewport height */
+}
+
+/* Dropdown button styles */
+.dropbtn {
+  background-color: #b3b6b3;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 100%; /* Make the button fill the container width */
+}
+
+/* Dropdown content styles */
+.dropdown-contents {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 250px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Dropdown link styles */
+.dropdown-contents a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-contents,
+.dropdown-contents.show {
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-contents a:hover {background-color: #ddd;}
+
+/* Search field styles */
+#myInput {
+  box-sizing: border-box;
+  background-image: url('searchicon.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  width: 100%; /* Make the search field fill the container width */
+}
+
+/* Country list container styles */
+#country-list-containers {
+  max-height: 300px; /* Limit the height of the country list */
+  overflow-y: auto; /* Make the country list scrollable */
+}
+
+/* Dropdown link styles */
+#country-list-containers a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  /* Stack dropdown and map on top of each other on smaller screens */
+  .content-container {
+    flex-direction: column;
+  }
+
+  .dropdown-container {
+    margin-right: 0; /* Remove the margin on smaller screens */
+    margin-bottom: 20px; /* Add space between dropdown and map */
+  }
+
+  .map-container {
+    width: 100%; /* Allow map to fill the width on smaller screens */
+  }
+}

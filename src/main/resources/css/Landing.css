@@ -1,0 +1,233 @@
+
+.header {
+    background-image: url('background.png');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 100px 0; /* Adjust the padding as needed */
+    position: relative;
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+.header .container {
+    max-width: 800px; /* Increased max-width to accommodate longer text on one line */
+    padding: 20px; /* Reduced padding for a tighter fit */
+    margin-top: -50px;
+    background-color: rgba(255, 255, 255, 0.4); /* Slightly more opaque for better readability */
+    border-radius: 15px; /* Smoother rounded corners */
+    display: inline-block;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* More pronounced shadow for depth */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border for refined edges */
+    text-align: center; /* Align text to the left for a more traditional reading style */
+}
+
+.header h2 {
+    margin-bottom: 10px; /* Reduced space above the button */
+    white-space: nowrap;
+    color: #333;
+    font-size: 48px; /* Larger font size for impact */
+    font-weight: 700; /* Bolder for emphasis */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Text shadow for depth */
+}
+
+.header p {
+    color: #555;
+    font-size: 20px; /* Larger font size for better readability */
+    margin-bottom: 20px; /* More space before the button */
+    line-height: 1.6; /* Improved line spacing for readability */
+}
+
+
+        .header a {
+            background-color: #e91e63;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .header a:hover {
+            background-color: #1f2024;
+        }
+
+
+        .header .container:hover {
+            transform: translateY(-5px); /* Slight upward lift */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Increased shadow on hover for a "lifting" effect */
+        }
+
+
+        /* Additional CSS for the landing page section */
+        .landing-page {
+            background-color: #f5f5f5;
+            padding: 60px 0;
+        }
+
+
+        .landing-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .landing-title {
+            font-size: 42px;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .landing-paragraph {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .explore-button {
+            background-color: #e91e63;
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .explore-button:hover {
+            background-color: #1f2024;
+        }
+
+
+        .info-boxes .container {
+            display: flex;
+            justify-content: space-around; /* Adjust the space around items */
+            flex-wrap: wrap; /* Allow the boxes to wrap as needed */
+            gap: 20px; /* Space between boxes */
+        }
+        
+        .info-box {
+            margin-top: 40px;
+            flex: 1; /* Allow the boxes to grow equally */
+            min-width: calc(33.333% - 20px); /* Minimum width for smaller screens, subtracting the gap */
+            padding: 20px;
+            color: #000000; /* Adjust text color as needed */
+            border: 1px solid #444;
+            text-align: center;
+            box-sizing: border-box; /* Include padding and border in the box's width */
+            overflow: hidden; /* Hide the overflow text */
+        }
+        
+        .info-box h4, .info-box p {
+            white-space: nowrap; /* Prevent text from wrapping */
+            overflow: hidden; /* Hide the overflow text */
+            text-overflow: ellipsis; /* Add an ellipsis to overflowing text */
+            margin: 0; /* Remove any default margins */
+            padding: 0; /* Remove any default padding */
+        }
+        
+        .info-box h4 {
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+        
+        .info-box p {
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .bar { /* Initial width */
+            height: 100%;
+            background-color: #4CAF50;
+        }
+
+        .charts-container .container {
+            display: flex;
+            flex-direction: column; /* Stack flex items vertically */
+            align-items: center; /* Center align the flex items */
+            max-width: 1400px;
+            margin: auto; /* Center the container */
+        }
+        
+        .chart-box {
+            width: 100%; /* Full width of the container */
+            border: 1px solid #444; /* Slight border for definition */
+            margin-bottom: 20px; /* Space between the chart boxes */
+            padding: 20px; /* Padding inside the chart boxes */
+            color: #000000; /* Text color for content */
+        }
+        
+        .chart-box .chart-content {
+            height: 1000px; /* Set a fixed height for the chart area */
+            
+            color: #777; /* Placeholder text color */
+            margin: 20px 0; /* Space around the placeholder chart area */
+        }
+        
+        
+        /* Responsive adjustments for smaller screens */
+        @media screen and (max-width: 768px) {
+            .info-boxes .container {
+                flex-direction: column;
+                align-items: center; /* Center the items when stacked */
+            }
+        
+            .info-box {
+                margin-top: 40px;
+                width: 100%; /* Full width on smaller screens */
+                margin-bottom: 10px; /* Space between stacked boxes */
+                min-width: 0; /* Override min-width for small screens */
+            }
+            .dropdown-content {
+                position: static; /* Dropdown content positioning */
+            }
+        
+            .logo-and-title, .user-auth, .responsive-menu {
+                margin-bottom: 10px; /* Space between navbar items */
+            }
+        
+            .info-boxes .container, .charts-container .container {
+                flex-direction: column; /* Stack the info boxes and chart containers */
+                align-items: center; /* Center align the stacked items */
+            }
+        
+            .info-box, .chart-box {
+                width: 100%; /* Full width for info boxes and chart boxes */
+                margin-bottom: 20px; /* Space between stacked items */
+            }
+        
+            .chart-box .chart-content {
+                height: auto; /* Adjust height for chart content */
+                margin: 20px 10px; /* Adjust margins for chart content */
+            }
+        
+            .header, .landing-page {
+                padding: 60px 20px; /* Adjust padding for header and landing page sections */
+            }
+        
+            .header .container, .landing-content {
+                max-width: 100%; /* Full width for containers */
+                padding: 20px; /* Adjust padding for containers */
+                text-align: center; /* Center-align the text */
+            }
+        
+            .header h2, .landing-title {
+                font-size: 32px; /* Adjust font size for titles */
+            }
+        
+            .header p, .landing-paragraph {
+                font-size: 18px; /* Adjust font size for paragraphs */
+            }
+        
+            .explore-button {
+                padding: 10px 20px; /* Adjust padding for buttons */
+            }
+        }
+        
+    
+
+
+        

@@ -1,0 +1,143 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff; /* White background */
+}
+
+/* Header, Navigation and Heading Styles */
+header {
+    width: 100%;
+    /* Add any specific styles for your header */
+}
+
+.video-heading {
+    text-align: center;
+    font-weight: 600;
+    margin: 2rem 0;
+}
+
+/* Main Content Styles */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center children horizontally */
+    justify-content: center; /* Center children vertically */
+    padding: 20px;
+}
+.video-container {
+    background-color: #000;
+    margin-bottom: 1rem;
+}
+
+/* Initially, we want to hide all the iframes */
+.hidden-div {
+    display: none;
+}
+
+/* Remote Container Styles */
+.remote-container {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    background-color: #333;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+.control {
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 2rem; /* 32px */
+    height: 2rem; /* 32px */
+    margin: 0 0.5rem;
+    cursor: pointer;
+    font-size: 0.875rem; /* 14px */
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.control:hover {
+    background-color: #eee;
+}
+
+/* Footer Styles */
+footer {
+    width: 100%;
+    /* Add any specific styles for your footer */
+}
+
+@media screen and (max-width: 768px) {
+    /* Adjustments for medium screens */
+    .navbar {
+        flex-direction: column;
+        align-items: center; /* Align items in the center for a cleaner look */
+    }
+
+    .nav-links li {
+        display: block;
+        width: 100%;
+        text-align: center; /* Center-align nav items */
+        margin: 0.5rem 0;
+    }
+
+    .video-container, .remote-container {
+        width: calc(100% - 3rem); /* Adjust the width to account for padding */
+        margin: 0 auto; /* Center-align the containers */
+        margin-bottom: 1rem;
+    }
+
+    .control {
+        width: 2.5rem; /* Increase the size for better touch interaction */
+        height: 2.5rem;
+        font-size: 1rem; /* Adjust font size for readability */
+    }
+}
+
+@media screen and (max-width: 576px) {
+    /* Adjustments specifically for small screens like mobile phones */
+    html {
+        font-size: 85%; /* Slightly reduce font size for better readability */
+    }
+
+    .navbar {
+        padding: 0.5rem; /* Reduce padding to save space */
+    }
+
+    .nav-links li {
+        margin: 0.5rem 0;
+    }
+
+    .video-heading {
+        font-size: 1.5rem; /* Adjust heading size for smaller screens */
+        margin: 1rem 0; /* Adjust margin for better spacing */
+    }
+
+    .video-container, .remote-container {
+        width: 100%; /* Full width for smaller screens */
+        margin-bottom: 1rem; /* Adjust margin for spacing */
+    }
+
+    .control {
+        width: 2.5rem; /* Adjust button size for easier interaction */
+        height: 2.5rem;
+        margin: 0 10px; /* Adjust margin for spacing */
+    }
+
+    .footer {
+        padding: 1rem 0.5rem; /* Adjust padding for smaller screens */
+        font-size: 0.8rem; /* Adjust font size for better readability */
+    }
+
+    /* Additional styling to ensure dropdown menu is usable on smaller screens */
+    .dropdown-content {
+        position: static; /* Adjust position for better accessibility */
+    }
+}

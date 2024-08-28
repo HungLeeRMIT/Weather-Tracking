@@ -1,0 +1,504 @@
+.compare-data-container {
+    background: #ffffff;
+    padding: 20px;
+}
+
+
+.compare-header h2, .compare-header p {
+    text-align: center;
+}
+.time-period-header h3 {
+    color: #ffffff; /* Dark grey color for the heading */
+    font-weight: bold; /* Makes the text bold */
+    font-size: 1.5em; /* Increases the font size */
+    margin-bottom: 10px;
+    text-transform: uppercase; /* Optional: Makes the text uppercase for added emphasis */
+    letter-spacing: 1px; /* Optional: Increases spacing between letters */
+}
+
+
+
+.time-period-inputs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.time-period {
+    background: #000000;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.time-period label {
+    color: #aaa;
+}
+
+.time-period input {
+    background: transparent;
+    border: 1px solid #555;
+    color: white;
+    padding: 5px;
+}
+
+.time-period-box {
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time-period-header {
+    text-align: center;
+    color: #333333;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+.time-period-form {
+    width: 100%;
+}
+.form-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+.period-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.error-message {
+    color: #dc3545;
+    padding-top: 10px;
+}
+
+
+.remove-btn {
+    background-color: red;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.table-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.time-period-controls {
+    display: flex;
+    justify-content: space-between; /* This will spread out the child elements */
+    align-items: center;
+}
+
+.time-period-input {
+    background: #ffffff; /* White background for visibility */
+    color: #333333; /* Dark text for readability */
+    border: 1px solid #ced4da; /* Border to match the dropdowns */
+    padding: 5px 10px; /* Padding to match the dropdowns */
+    margin: 0; /* Remove any default margin */
+    width: 100%; /* Match width with dropdowns - you might need to adjust this */
+}
+
+.content-wrapper {
+    max-width: 1200px; /* Or your desired max width */
+    margin: 0 auto; /* This centers the container */
+    padding: 20px; /* Add some padding */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+    background-color: #ffffff; /* White background */
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.add-time-period-btn, .world-view-btn {
+    padding: 10px 20px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+.add-time-period-btn {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+
+.world-view-btn {
+    padding: 12px 20px; /* Adjust padding to increase height */
+    font-size: 1em; /* Adjust font size as needed */
+    color: white;
+    background-color: #dc3545;
+    border: none;
+    cursor: pointer;
+    display: inline-block; /* To allow width and height adjustments */
+    text-align: center;
+}
+
+
+.dropdown-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.dropdown1 {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+
+
+.filter label {
+    color: #aaa;
+}
+
+.filter select {
+    background: #333;
+    border: 1px solid #555;
+    color: white;
+    padding: 5px;
+    width: auto; /* Adjust the width to 'auto' to accommodate the content */
+    min-width: 120px; /* Set a minimum width to ensure readability */
+}
+
+.filters-header h3 {
+    color: rgb(0, 0, 0); /* Set the color of the heading */
+    margin: 0; /* Adjust if necessary */
+    /* Add any additional styling you need for this heading */
+}
+.filters-dropdowns {
+    display: flex;
+    gap: 50px; /* Adjust the gap as necessary */
+}
+
+.compare-table table  {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff; /* White background for tables */
+}
+
+
+.compare-table table,
+.compare-table th,
+.compare-table td {
+    padding: 10px;
+    border: 1px solid #cccccc; /* Light grey border */
+    text-align: left;
+    background-color: #f8f8f8; /* Very light grey background for table headers */
+}
+
+.temperature-filter-box {
+    background: #ffffff; /* Light grey background for consistency */
+    padding: 20px;
+    margin-top: 20px; /* Space from the previous box */
+}
+.temperature-filter-heading {
+    margin-right: 10px; /* Adds some space after the heading */
+    white-space: nowrap; /* Prevents the heading from wrapping */
+    flex-shrink: 0; /* Prevents the heading from shrinking */
+}
+
+.temperature-filter-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* wrap items when the space is too small */
+}
+
+.temperature-input {
+    font-size: 1em; /* Increase font size for inputs */
+    padding: 10px; /* Increase padding to make inputs taller */
+    margin-right: 10px; /* Maintain space between inputs and the button */
+    width: 150px; /* Set a fixed width or use percentage */
+}
+
+.temperature-input, .filter select {
+    flex-grow: 1;
+    max-width: calc(50% - 20px); /* Adjust the percentage as necessary */
+}
+.temperature-filter-label {
+    font-size: 1.2em; /* Increase font size for label */
+    margin-right: 20px; /* Add more space after the label */
+    align-self: center; /* Vertically center align with the inputs and button */
+}
+.apply-temperature-filter-btn {
+    font-size: 1em; /* Increase font size for button */
+    padding: 10px 20px; /* Increase padding to make button taller */
+    min-width: 100px; /* Optionally set a minimum width for the button */
+}
+.temperature-filter-label, .temperature-input, .apply-temperature-filter-btn {
+    align-self: center;
+}
+
+.input-period {
+    width: 50%; /* Adjust width as per design */
+    margin-bottom: 15px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.search-input {
+    padding: 12px 10px; /* Increased padding to make the input box taller */
+    width: 100%; /* Take up the full width of the container */
+    border: 1px solid #ced4da; /* Border to match the dropdowns */
+    margin-bottom: 5px; /* Space below the input box */
+    box-sizing: border-box; /* Ensure padding is included in the total width/height */
+}
+.sort-button {
+    background-color: #f7f7f7; /* Default background */
+    color: #333; /* Default icon color */
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1rem;
+    margin: 0 5px;
+}
+.clear-btn {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.sort-button:hover {
+    background-color: #eaeaea; /* Lighter background on hover */
+    color: #007bff; /* Highlight color for icon on hover */
+}
+.ranking-and-sorting {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    justify-content: flex-start; /* Aligns items to the start of the flex container */
+    gap: 10px; /* Adjust the gap as necessary */
+}
+.ranking-header {
+    margin-right: 10px; /* Ensures a margin between the text and the buttons */
+    white-space: nowrap; /* Prevents the text from wrapping */
+}
+.sort-btn {
+    display: flex;
+    align-items: center; /* Aligns the buttons vertically */
+}
+
+
+.sort-button {
+    margin-left: 5px;
+}
+.buttons-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.sort-btn > button {
+    margin-right: 5px; /* Adjust the right margin of the buttons */
+}
+.ranking-form {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap; /* Prevents wrapping */
+}
+
+@media (max-width: 992px) {
+    /* For medium screens, ensure elements are still legible and not too compressed */
+    .temperature-input, .filter select {
+        max-width: calc(50% - 10px); /* Allow two items per row with a small gap */
+    }
+
+    .temperature-filter-controls, .filters-dropdowns {
+        justify-content: space-between;
+    }
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+    /* Adjust styles for the navigation menu */
+    .navbar .nav-links {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        top: 100%;
+        left: 0;
+        width: 100%;
+    }.input-period {
+        width: 100%;
+    }
+
+    .navbar .responsive-menu {
+        display: block;
+    }
+    .buttons-row {
+        flex-direction: column;
+    }
+
+    /* Stack the time period controls vertically */
+    .time-period-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .time-period-controls > * {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /* Make the dropdowns and buttons full width */
+    .time-period-box .dropdown-group,
+    .time-period-box .world-view-btn,
+    .time-period-box .add-time-period-btn {
+        width: 100%;
+    }
+
+    .time-period-box select.dropdown1 {
+        width: calc(100% - 20px); /* adjust for padding */
+    }
+
+    /* Adjust table layout */
+    .compare-table table {
+        width: 100%;
+        border: 1px solid #dee2e6;
+    }
+
+    .compare-table th,
+    .compare-table td {
+        padding: 5px; /* reduce padding on smaller screens */
+        font-size: 0.9em; /* reduce font size */
+    }
+
+    /* Filters on top of the table should stack vertically */
+    .table-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .filter select {
+        width: 100%; /* Full width on smaller screens */
+        box-sizing: border-box; /* Ensures padding is included in the width */
+    }
+
+    .table-filters .filters-header,
+    .table-filters .filters-dropdowns {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /* Adjust font sizes for headings */
+    header .title h1,
+    .compare-header h2,
+    .compare-header p,
+    .time-period-header h3,
+    .filters-header h3 {
+        font-size: 1.2em; /* Adjust the font size */
+    }
+
+    /* Footer adjustments */
+    .footer .footer-col {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .footer .social-links {
+        justify-content: center;
+    }
+
+    .footer .updates-section {
+        text-align: center;
+    }
+    .dropdown-group {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .temperature-filter-controls {
+        flex-wrap: wrap;
+    }
+
+    .temperature-filter-heading,
+    .temperature-input,
+    .apply-temperature-filter-btn {
+        flex-basis: 100%;
+        margin-bottom: 5px;
+    }
+    .form-buttons {
+        justify-content: space-between;
+    }
+    .time-period-form {
+        grid-template-columns: 1fr;
+    }
+
+    .period-input-section, .add-row-form, .clear-form {
+        grid-column: 1 / -1;
+    }
+
+    .add-time-period-btn, .clear-btn {
+        width: 100%;
+    }
+    .add-time-period-btn, .world-view-btn {
+        width: 100%;
+        margin-bottom: 10px; /* Add spacing between buttons */
+    }
+    .temperature-filter-controls {
+        flex-wrap: nowrap; /* Prevents wrapping */
+    }
+
+    .temperature-input {
+        margin: 0 10px; /* Ensures spacing on both sides */
+        flex: 0 0 auto; /* Prevents the inputs from growing too much */
+    }
+
+    .apply-temperature-filter-btn {
+        flex: 0 0 auto; /* Prevents the button from growing */
+    }
+    .ranking-and-sorting {
+        flex-direction: column; /* Stacks the elements on top of each other on smaller screens */
+    }
+
+    .ranking-header {
+        margin-bottom: 10px; /* Adds space between the title and the buttons on smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    /* Further reduce font sizes for very small screens */
+    .compare-header h2,
+    .compare-header p,
+    .time-period-header h3,
+    .filters-header h3 {
+        font-size: 1em;
+    }
+    .dropdown-group {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+}

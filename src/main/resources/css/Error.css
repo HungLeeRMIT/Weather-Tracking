@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+    background: url('error.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+main {
+    width: 100%;
+    max-width: 600px; /* Limit the width of the text */
+    margin: auto;
+}
+
+
+.error-content {
+    background: rgba(255, 255, 255, 0.8); /* Optional: Add a semi-transparent layer for better readability */
+    padding: 20px;
+    border-radius: 10px; /* Optional: Rounded corners for the content box */
+}
+.return-home-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Adjust button color */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+
+.return-home-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+@media (max-width: 768px) {
+    .error-content h1 {
+        font-size: 1.5em; /* Smaller text on mobile */
+    }
+    body {
+        padding: 10px;
+    }
+}

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Rating.css">
+    <link rel="stylesheet" href="Landing.css">
+    <link rel="stylesheet" href="EventLanding.css">
+    <script  src="Rating.js"></script>
+    <script  src="HeadAndFooter.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <title>Climate Insight</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-and-title">
+                <a href="/" class="logo-title-link">
+                    <div class="logo">
+                        <img src="logo.png" alt="Climate Insight Logo">
+                    </div>
+                    <div class="title">
+                        <h1>Climate Insight</h1>
+                    </div>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a id="home-link" href="/">Home</a></li>
+                <li class="dropdown">
+                    <a id="detail-link" href="Population.html">Detail View</a>
+                    <li class="dropdown">
+                        <a id="analytic-tools-link" href="javascript:void(0);">Analytic Tools</a>
+                        <div class="dropdown-content">
+                            <a href="CompareData.html">Compare Data</a>
+                            <a href="FindSimilar.html">Find Similar</a>
+                        </div>
+                    </li>
+    </li>
+                <li><a id="mission-link" href="Mission.html">Mission</a></li>
+                <li><a id="FAQ-link" href="FAQ.html">FAQ</a></li>
+                <li><a id="Forecast" href="Forecast.html">Forecast</a></li>
+                <li><a id="resources" href="Resources.html">Resources</a></li>
+                <li><a id="about-link" href="AboutUs.html">About Us</a></li>
+            </ul>
+            <div class="user-auth">
+                <div class="user-icon-dropdown">
+                    <img src="usericon.png" alt="User" class="user-avatar-img" onclick="toggleUserDropdown()">
+                    <div id="userDropdown" class="user-dropdown-content">
+                        <a href="Sign_In.html">Sign In</a>
+                        <a href="Sign_Up.html">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+            <div class="responsive-menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Additional content after navbar -->
+    <section class="header">
+        <div class="container">
+            <h2>Welcome to Climate Insight</h2>
+            <p>Empowering Change Through Climate Data</p>
+            <a class="explore-button" href="Population.html">Explore Now</a>
+        </div>
+    </section>
+
+    <section class="info-boxes">
+        <div class="container">
+            <div class="info-box">
+                <h3>Number of country</h3>
+                <h3 th:text="${country_numb}"> </h3>
+            </div>
+            <div class="info-box">
+                <h3>Global Population Data Point</h3>
+                <h3 th:text="${pop_numb}"> </h3>
+                <h3 th:text="${pop_start_end}"> </h3>
+            </div>
+            <div class="info-box">
+                <h3>Global Temperature Data Point</h3>
+                <h3 th:text="${temp_numb}"> </h3>
+                <h3 th:text="${temp_start_end}"> </h3>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="charts-container">
+        <div class="container">
+            <div class="chart-box">
+                <h3>Global Population Overview</h3>
+                <div style="font-size: 10px;" class="chart-content">
+                    <div style="margin:0px; padding:0px; margin:0px; width:100%; border-bottom-style:solid; border-width:thin; border-color:gray" th:text="${maxPopLanding}"> </div> <div></div>
+                    <div th:style="'height:100%; width:100% ;display:grid; grid-template-rows: repeat(10, 1fr) 5%; grid-template-columns: 70px repeat(' + (${worldPopulation.size()}) + ', 1fr); align-items:end;'">
+
+                        <h4 th:style="'margin:0px;grid-column:1/'+ (${worldPopulation.size()+2}) +'; grid-row:10; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="(0)"> </h4>
+                            <h4 th:style="'margin:0px; grid-column:1/'+ (${worldPopulation.size()+2}) +'; grid-row:9; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="${#numbers.formatDecimal(maxPopLanding* 1/10, 0, 0, 'COMMA')}"> </h4>
+                            <h4 th:style="'margin:0px;grid-column:1/'+ (${worldPopulation.size()+2}) +'; grid-row:8; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="${#numbers.formatDecimal(maxPopLanding* 2/10, 0, 0, 'COMMA')}"> </h4>
+                            <h4 th:style="'margin:0px;grid-column:1/'+ (${worldPopulation.size()+2}) +'; grid-row:7; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="${#numbers.formatDecimal(maxPopLanding* 3/10, 0, 0, 'COMMA')}"> </h4>
+                            <h4 th:style="'margin:0px;grid-column:1/'+ (${worldPopulation.size()+2}) +'; grid-row:6; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="${#numbers.formatDecimal(maxPopLanding* 4/10, 0, 0, 'COMMA')}"> </h4>
+                            <h4 th:style="'margin:0px;grid-column:1/'+ (${worldPopulation.size()+2}) +'; grid-row:5; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="${#numbers.formatDecimal(maxPopLanding* 5/10, 0, 0, 'COMMA')}"> </h4>
+                            <h4 th:style="'margin:0px;grid-column:1/'+ (${worldPopulation.size()+2}) +'; grid-row:4; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="${#numbers.formatDecimal(maxPopLanding* 6/10, 0, 0, 'COMMA')}"> </h4>
+                            <h4 th:style="'margin:0px;grid-column:1/'+ (${worldPopulation.size()+2}) +'; grid-row:3; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="${#numbers.formatDecimal(maxPopLanding* 7/10, 0, 0, 'COMMA')}"> </h4>
+                            <h4 th:style="'margin:0px;grid-column:1/'+ (${worldPopulation.size()+2}) +'; grid-row:2; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="${#numbers.formatDecimal(maxPopLanding* 8/10, 0, 0, 'COMMA')}"> </h4>
+                            <h4 th:style="'margin:0px;grid-column:1/'+ (${worldPopulation.size()+2}) +'; grid-row:1; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="${#numbers.formatDecimal(maxPopLanding* 9/10, 0, 0, 'COMMA')}"> </h4>
+        
+                            <h4 th:each="pop, iterStat : ${worldPopulation}" th:text="${pop.year}" th:style="' justify-self:center; grid-row: 11;grid-column:' + (${iterStat.index+2}) + ';'"></h4>
+
+                            
+                            <h4 class="bar" th:each="pop, iterStat : ${worldPopulation}" th:style="'margin:0px;justify-self:center ; grid-row: 1/11; grid-column:'+ (${iterStat.index+2}) + '; height:' + (${pop.population} * 100 / ${maxPopLanding}) + '%; width:30%; '"></h4>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-box">
+                <h3>Global Country Population Ranking</h3>
+                <div style="font-size: 18px;" class="chart-content">
+                    <div style="margin:0px; padding:0px; margin:0px; width:100%; border-bottom-style:solid; border-width:thin; border-color:gray" th:text="${#numbers.formatDecimal(maxTempLanding, 1, 2)}"> </div> <div></div>
+                    <div th:style="'height:100%; width:100% ;display:grid; grid-template-rows: repeat(10, 1fr) 5%; grid-template-columns: 70px repeat(' + (${worldTemperature.size()}) + ', 1fr); align-items:end;'">
+
+                        <h4 th:style="'margin:0px;grid-column:1/'+ (${worldTemperature.size()+2}) +'; grid-row:10; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="(0)"> </h4>
+                            <h4 th:style="'margin:0px; grid-column:1/'+ (${worldTemperature.size()+2}) +'; grid-row:9; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="${#numbers.formatDecimal(maxTempLanding*1/10, 1, 2)}"> </h4> 
+                            <h4 th:style="'margin:0px;grid-column:1/'+ (${worldTemperature.size()+2}) +'; grid-row:8; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="${#numbers.formatDecimal(maxTempLanding*2/10, 1, 2)}"> </h4>
+                            <h4 th:style="'margin:0px;grid-column:1/'+ (${worldTemperature.size()+2}) +'; grid-row:7; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="${#numbers.formatDecimal(maxTempLanding*3/10, 1, 2)}"> </h4>
+                            <h4 th:style="'margin:0px;grid-column:1/'+ (${worldTemperature.size()+2}) +'; grid-row:6; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="${#numbers.formatDecimal(maxTempLanding*4/10, 1, 2)}"> </h4>
+                            <h4 th:style="'margin:0px;grid-column:1/'+ (${worldTemperature.size()+2}) +'; grid-row:5; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="${#numbers.formatDecimal(maxTempLanding*5/10, 1, 2)}"> </h4>
+                            <h4 th:style="'margin:0px;grid-column:1/'+ (${worldTemperature.size()+2}) +'; grid-row:4; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="${#numbers.formatDecimal(maxTempLanding*6/10, 1, 2)}"> </h4>
+                            <h4 th:style="'margin:0px;grid-column:1/'+ (${worldTemperature.size()+2}) +'; grid-row:3; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="${#numbers.formatDecimal(maxTempLanding*7/10, 1, 2)}"> </h4>
+                            <h4 th:style="'margin:0px;grid-column:1/'+ (${worldTemperature.size()+2}) +'; grid-row:2; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="${#numbers.formatDecimal(maxTempLanding*8/10, 1, 2)}"> </h4>
+                            <h4 th:style="'margin:0px;grid-column:1/'+ (${worldTemperature.size()+2}) +'; grid-row:1; border-bottom-style:solid; border-width:thin; border-color:gray'" th:text="${#numbers.formatDecimal(maxTempLanding*9/10, 1, 2)}"> </h4>
+        
+                            <h4 th:each="pop, iterStat : ${worldTemperature}" th:text="${pop.year}" th:style="' justify-self:center; grid-row: 11;grid-column:' + (${iterStat.index+2}) + ';'"></h4>
+                            
+                            
+                            <h4 class="bar" th:each="pop, iterStat : ${worldTemperature}" th:style="'margin:0px;justify-self:center ; grid-row: 1/11; grid-column:'+ (${iterStat.index+2}) + '; height:' + (${pop.avgTemperature} * 100 / ${maxTempLanding}) + '%; width:30%; '"></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Landing Page Section -->
+    <section class="landing-page">
+        <div class="container landing-content">
+            <h2 class="landing-title">Why Choose Climate Insight?</h2>
+            <p class="landing-paragraph">Climate Insight offers open data, visualizations, and analysis to help policymakers, researchers, and other stakeholders gather insights on countries' climate progress. Our mission is to drive positive change and raise awareness about climate issues worldwide.</p>
+            <a class="explore-button" href="Mission.html">Explore More</a>
+        </div>
+    </section>
+
+
+    <div class="event-section" id="eventSection">
+        <h2 class="event-heading">Join Our Environmental Charity Event</h2>
+        <p class="event-description">
+            We are hosting a charity event to raise funds for environmental conservation and awareness. Your support is crucial in our mission to save the environment.
+        </p>
+        <a href="Event.html">Find out more</a>
+    </div>
+
+    <!-- Rating Card Section -->
+<main class="rating-section">
+    <div class="rating-card">
+        <div class="rating-card__front">
+            <div class="rating-card__img">
+                <img src="https://rvs-interactive-rating-component.vercel.app/images/icon-star.svg" alt="">
+            </div>
+            <div class="rating-card__content">
+                <h2>How did we do?</h2>
+                <p>Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
+            </div>
+            <div class="rating-card__ratings">
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+                <button>5</button>
+            </div>
+            <button class="rating-card__btn">Submit</button>
+        </div>
+        <div class="rating-card__back">
+            <div class="rating-card__img">
+                <img src="https://rvs-interactive-rating-component.vercel.app/images/illustration-thank-you.svg" alt="">
+            </div>
+            <div class="rating-card__result">
+                You selected <span class="rating-card__result--value">4</span> out of 5
+            </div>
+            <div class="rating-card__content">
+                <h1>Thank you!</h1>
+                <p>We appreciate you taking the time to give a rating. If you ever need more support, don't hesitate to get in touch!</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Organisation</h4>
+                    <ul>
+                        <li><a href="/">Overview</a></li>
+                        <li><a href="Mission.html">Mission</a></li>
+                        <li><a href="Resources.html">Resources</a></li>
+                        <li><a href="AboutUs.html">About us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get help</h4>
+                    <ul>
+                        <li><a href="FAQ.html#how-to-use-section">How it works</a></li>
+                        <li><a href="FAQ.html">FAQ</a></li>
+                        <li><a href="Forecast.html">Forecast</a></li>
+                        <li><a href="AboutUs.html">Contact us</a></li>
+                        <li><a href="Payment.html">payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Event</h4>
+                    <ul>
+                        <li><a href="Event.html">Charity</a></li>
+                        <li><a href="Event.html">Blue Sea </a></li>
+                        <li><a href="Event.html">Green Globe</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/satrmithanoi"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.rmit.edu.vn/vi"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/rmituniversityvietnam/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/school/rmit-university-vietnam/?originalSubdomain=vn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="updates-section">
+                <form>
+                    <div style="color:white"><h3>Get update</h3> </div>
+                    <input type="email" placeholder="Enter your email " required>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <p style="color: #e91e63;">© Copyright Team-HN-G03-COSC3056 2024. All Rights Reserved | Designed and Developed by Team-HN-G03-COSC3056</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+

@@ -1,0 +1,556 @@
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Visual Hierarchy */
+.page-heading h2 {
+    color: #fff;
+    background-color: #007bff;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.page-heading {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+h1 {
+    text-align: left; /* Aligns h1 elements to the left */
+    font-size: 3rem; /* You can adjust this size as needed */
+    color: #000000; /* This is the hex code for black */
+    font-weight: 700; /* Makes the font weight extra bold */
+}
+h2 {
+    text-align: center; /* Aligns h2 elements to the center */
+    font-size: 1rem; /* 32px */
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* Button Styles */
+button, input[type='submit'] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    cursor: pointer;
+    border-radius: 0.25rem;
+}
+
+button:hover, input[type='submit']:hover {
+    background-color: #0056b3;
+}
+
+/* Resets any potential conflicts and sets box-sizing for all elements */
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+.detail-view-container .info-box h3 {
+    font-size: 40px; /* Adjust the font size as needed */
+    margin-bottom: 10px; /* Ensure there's a margin below the title */
+}
+
+
+.detail-view-container {
+    display: flex;
+    flex-wrap: nowrap; /* prevent the flex items from wrapping */
+}
+.detail-view-container .info-box {
+    text-align: center; /* Center the contents of .info-box */
+}
+.side-nav,
+.content-area {
+    flex: 1; /* both children will grow equally */
+    display: flex;
+    flex-direction: column; /* align children of side-nav and content-area vertically */
+}
+
+.side-nav {
+    padding: 1rem;
+    flex: 1 1 25%;
+    background: #f2f2f2;
+    padding: 1rem 2rem; /* Increased right padding */
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+/* Search Container */
+.search-container {
+    position: relative;
+    margin: 1rem 0;
+}
+
+/* Search Form */
+.search-form {
+    display: block;
+    margin: 0;
+}
+
+
+/* Search Input */
+.search-input {
+    width: 100%; /* Full width */
+    padding: 10px;
+    padding-right: 100px; /* Adjust this value to fit the button inside */
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+
+/* Search Button */
+.search-button {
+    position: absolute;
+    top: 1px; /* Adjust if necessary */
+    right: 1px; /* Adjust if necessary */
+    padding: 7px 20px; /* Adjust width (20px here) to control the size of the button */
+    margin: 0;
+    border: 1px solid #007bff;
+    background-color: #007bff;
+    color: white;
+    border-radius: 0 0.25rem 0.25rem 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 16px; /* Match the font size of the input */
+    line-height: normal; /* Adjust if the button's text is not vertically centered */
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+/* Sorting Buttons Container */
+.sorting-container {
+    margin-bottom: 1rem;
+}
+
+/* Sorting Form */
+.sorting-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sort Button */
+.sort-btn {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.sort-btn {
+    margin-right: 0.5rem;
+}
+
+
+.sort-btn button {
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    background-color: #d8d8d8; /* Grey background */
+    color: #333; /* Darker text color for better contrast */
+    transition: background-color 0.3s, color 0.3s; /* Transition for smooth color change */
+    display: inline-flex;
+    align-items: center;
+}
+.sort-btn .sort-label {
+    margin-right: 20px; /* Increase right margin if needed */
+    padding-left: 10px; /* Add padding to the left if needed */
+}
+
+
+.centered-h2 {
+    text-align: center;
+}
+.left-aligned-h1 {
+    text-align: left;
+}
+
+.sort-btn button i {
+    margin-left: 5px;
+    font-size: 14px;
+}
+
+.sort-btn button:hover {
+    background-color: #007bff; /* Blue background for hover state */
+    color: white; /* White text color for hover state */
+}
+.sort-btn button.active {
+    background-color: #007bff; /* Blue background color */
+    color: white; /* White text color */
+}
+/* Style for the up and down filter icons */
+.fa-sort-alpha-down:before,
+.fa-sort-alpha-up:before,
+.fa-sort-amount-down:before,
+.fa-sort-amount-up:before {
+    font-weight: bold;
+}
+.fa-sort-alpha-up:before {
+    content: '\f15d'; /* Unicode for up arrow */
+}
+.fa-sort-alpha-down:before {
+    content: '\f15e'; /* Unicode for down arrow */
+}
+.fa-sort-amount-up:before {
+    content: '\f160'; /* Unicode for up arrow */
+}
+.fa-sort-amount-down:before {
+    content: '\f161'; /* Unicode for down arrow */
+}
+
+
+.country-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto; /* Allows scrolling */
+    flex-grow: 1; /* Takes up all available space */
+}
+
+.country-list li {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s;
+}
+.country-list li:hover {
+    background-color: #eaeaea; /* Highlight on hover */
+}
+
+.content-area {
+    flex: 3 1 600px;
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.detail-view-container .content-area {
+    display: flex;
+    justify-content: center; /* This will center the child elements (info-box) */
+    flex-direction: column; /* Stack the children vertically */
+}
+/* If the buttons are wrapped in another container, ensure that container is also centered */
+.detail-view-container .button-container { /* Replace .button-container with the actual class or element */
+    text-align: center; /* Center the buttons horizontally */
+}
+
+
+
+/* Style for the new content boxes */
+.info-box,
+.filter-box,
+.data-box {
+    margin-bottom: 20px;
+    padding: 10px; /* Reduced padding for content boxes */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.info-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 10px;
+    margin: 0; /* Remove any default margins */
+    width: 100%; /* Use full width of the parent */
+    text-align: center;
+}
+
+.info-box h1 {
+    text-align: left; /* Aligns h1 text to the left */
+    margin-left: 0; /* Adjusts the margin to align with the container or as needed */
+    display: block; /* Ensures h1 behaves as a block-level element */
+    width: 100%; /* Ensures h1 takes the full width of its container */
+}
+
+.info-btn {
+    padding: 10px 15px; /* Example padding, adjust as needed */
+    background-color: #007bff; /* Example background color */
+    color: white; /* Text color */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor to indicate it's clickable */
+    display: inline-block; /* Align side by side */
+    margin: 0 5px; /* Space out the 'buttons' */
+    text-decoration: none; /* Remove underline from links */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+/* Style for the h2 that looks like a button */
+.info-box h2.info-btn {
+    padding: 10px 15px;
+    background-color: white; /* Default background color is white */
+    color: #007bff; /* Text color is blue */
+    border: 2px solid #007bff; /* Blue border to distinguish the button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor to indicate it's clickable */
+    display: inline-block; /* Align side by side */
+    margin: 0 5px; /* Space out the 'buttons' */
+    text-decoration: none; /* Remove underline from links */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover and active effects */
+}
+
+/* Adjust this selector to style the link inside the h2 */
+.info-box h2.info-btn a {
+    color: inherit; /* Inherit the text color from the h2 */
+    text-decoration: none; /* Remove underline from links */
+    display: block; /* Make the link fill the h2 for better click area */
+}
+
+/* Hover effect for the h2 'buttons' */
+.info-box h2.info-btn:hover {
+    background-color: #e7f5ff; /* Light blue shade on hover */
+}
+.info-box h2.info-btn.active {
+    background-color: #007bff; /* Blue background for active state */
+    color: white; /* White text color for active state */
+}
+
+
+/* Style for the Filter Box heading */
+.filter-box h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Style for the year selection dropdowns */
+.year-selection {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.year-dropdown {
+    flex-basis: 45%;
+}
+
+.year-dropdown label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.year-dropdown select {
+    width: 50%;
+    padding: 10px;
+    background-color: #555;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.year-dropdown select option {
+    background-color: white;
+    color: black;
+}
+
+/* Style for the Data Changes Box */
+.data-changes-box {
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Style for the underline beneath the Data Changes Box */
+.underline {
+    height: 2px;
+    background-color: #000000;
+    width: 100%;
+    margin: 10px auto 20px;
+}
+
+/* Style for the buttons */
+.data-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.data-buttons button {
+    padding: 10px 20px;
+    background-color: #d8d8d8; /* Blue button background color */
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.data-buttons button:hover {
+    background-color: #007bff; /* Keep default color on hover */
+}
+
+
+.data-buttons button.active {
+    background-color: #348be7; /* Darker blue for active button */
+}
+
+
+
+#table-container {
+    max-height: 400px; /* Set a maximum height for scrollable containers */
+    overflow-y: auto; /* Add vertical scrollbar if content exceeds the container height */
+    margin-top: 20px;
+
+}
+
+/* Style for the data table */
+#population-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white; /* White background for the table */
+    border: 1px solid #ddd; /* Add border to the table */
+}
+
+#population-table th,
+#population-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd; /* Add borders to table cells */
+}
+
+#population-table th {
+    background-color: #f2f2f2; /* Light gray background for table header */
+}
+
+#population-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Alternate row background color */
+}
+
+#population-table tbody tr:hover {
+    background-color: #eaeaea; /* Highlight on hover */
+}
+.country-list option {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s;
+}
+input[type='text'], input[type='search'], select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+a {
+    text-decoration: none;
+}
+.bar {
+    height: 30px;
+    background-color: #4CAF50;
+}
+
+/* Styles for screens larger than 576px (small tablets and larger) */
+@media (max-width: 576px) {
+    .info-box {
+        flex-direction: row;
+        padding: 5px; /* Even less padding */
+    }
+
+    .info-btn {
+        padding: 5px 10px; /* Adjust padding */
+        font-size: 14px; /* Adjust font size */
+    }
+}
+/* Styles for screens larger than 768px (tablets and desktops) */
+@media (max-width: 768px) {
+    .info-box {
+        flex-direction: row;
+    }
+
+    .info-btn {
+        padding: 10px 10px; /* Further reduce padding for smaller screens */
+    }
+}
+.bar { /* Initial width */
+    height: 100%;
+    background-color: #4CAF50;
+}
+
+
+/* Styles for screens smaller than 576px (small screens and mobile phones) */
+@media (max-width: 575px) {
+
+    .side-nav {
+        font-size: 14px; /* Adjust the font size for side-nav on smaller screens */
+    }
+
+    .detail-view-container {
+        flex-direction: column;
+    }
+
+    .side-nav {
+        flex-basis: 100%;
+        margin-right: 0;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background-color: #f2f2f2;
+        z-index: 1;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .responsive-menu {
+        display: block;
+    }
+
+    .page-heading h2 {
+        font-size: 20px; /* Reduce heading font size for small screens */
+    }
+
+    .data-buttons button {
+        padding: 8px 16px; /* Reduce button padding for small screens */
+    }
+
+    .info-box,
+    .filter-box,
+    .data-box {
+        width: 100%; /* Set width to 100% for smaller screens */
+    }
+    
+    
+}

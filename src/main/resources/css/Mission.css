@@ -1,0 +1,170 @@
+/* Main Container Styles */
+.main-container {
+    display: flex;
+    align-items: flex-start; /* Align items at the start of the cross axis */
+    justify-content: space-between; /* Distribute extra space */
+    padding: 20px;
+    gap: 20px; /* Adds space between the two boxes */
+    height: 100%; /* Make sure the container fills the height */
+}
+
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column; /* Stack the boxes on top of each other on smaller screens */
+    }
+
+    .left-side-box,
+    .mission-statement {
+        width: 100%; /* Full width on smaller screens */
+        margin-right: 0; /* Remove the margin between the boxes */
+        margin-bottom: 20px; /* Add space between the stacked elements */
+    }
+}
+
+
+/* Mission Statement Styles */
+.mission-statement {
+    flex-grow: 3; /* Allow box to grow as needed */
+    /* Adjust the width as necessary, remove if not needed */
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    /* Adjust margin as necessary */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Set a max-width if necessary, remove if not needed */
+    height: fit-content; /* Make sure the box only takes up the space needed by its content */
+}
+
+.mission-header h2 {
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.accordion {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    transition: 0.4s;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    border-bottom: 3px solid #0056b3;
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.1s ease-out;
+    border-radius: 4px;
+}
+
+.mission-content {
+    margin-top: 10px;
+}
+
+.panel p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 10px
+}
+.panel li {
+    margin-bottom: 10px; /* Add some space between list items */
+}
+
+.panel ul {
+    list-style-type: disc; /* This will ensure bullets are present */
+    padding-left: 40px; /* Adjust the padding to align the bullets correctly */
+}
+.panel ol {
+    list-style-type: decimal; /* This will ensure numbers are present */
+    padding-left: 40px; /* Adjust the padding to align the numbers correctly */
+}
+/* Add any additional styling you want for the mission statement */
+
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .mission-statement {
+        padding: 20px 10px;
+        margin: 10px;
+        max-width: 100%;
+    }
+
+    .mission-header h2 {
+        font-size: 20px; /* Adjust font size for smaller screens */
+    }
+
+    .accordion {
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .panel {
+        padding: 0 15px;
+    }
+
+    .panel p, .panel li {
+        font-size: 14px; /* Smaller font size for better readability on small screens */
+    }
+
+    .panel ul {
+        padding-left: 20px; /* Adjust padding for bullet points */
+    }
+
+    .panel ol {
+        padding-left: 20px; /* Adjust padding for numbered list */
+    }
+    .accordion.active + .panel {
+        max-height: none;
+    }
+}
+
+/* More specific adjustments for very small screens */
+@media (max-width: 480px) {
+    .mission-header h2 {
+        font-size: 18px; /* Even smaller font size for very small screens */
+    }
+
+    .accordion {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    /* Adjust panel padding and list styles for very small screens */
+    .panel {
+        padding: 0 12px;
+    }
+
+    .panel ul {
+        padding-left: 15px;
+    }
+
+    .panel ol {
+        padding-left: 15px;
+    }
+    .active + .panel {
+        max-height: none;
+    }
+}
+
+.accordion.active + .panel {
+    max-height: 1000px; /* Use a large max-height for the transition */
+    overflow: visible; /* Make sure the content is not hidden */
+    transition: max-height 0.5s ease-in-out; /* Adjust timing to your preference */
+}
+
+/* Ensure content is not hidden */
+/* This will make sure that the panel's content is visible when active */

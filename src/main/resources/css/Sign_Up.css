@@ -1,0 +1,171 @@
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(#040909 60vh, #312c2a 80vh);
+        }
+        .bg-image {
+            background-image: url('signinbg.png'); /* Adjust the path as necessary */
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: glowingBackground 5s infinite alternate;
+        }
+        .signup-container {
+            width: 400px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .signup-container h2 {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .form-control {
+            background-color: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+        }
+
+        .form-control::placeholder {
+            color: #ddd;
+        }
+        .btn-signup {
+            background-color: #2196F3; /* Change to your preferred color */
+            border: none;
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-signup:hover {
+            background-color: #1976D2; /* Change to your preferred hover color */
+        }
+        .login-container label {
+            margin-bottom: 8px;
+            display: block;
+        }
+        .icon-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        .icon-container i {
+            color: #fff;
+            font-size: 20px;
+        }
+        .forgot-password, .social-signup {
+            text-align: center;
+            margin-top: 16px;
+        }
+        .forgot-password a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .forgot-password a:hover {
+            color: #fff;
+        }
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            background: #fff;
+            color: #555;
+            display: inline-block;
+            margin: 0 5px;
+            transition: background-color 0.3s ease;
+        }
+        .social-icon:hover {
+            background-color: #eee;
+        }
+        .password-group {
+            position: relative;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+            color: #ddd;
+            z-index: 2;
+        }
+        .toggle-password:hover {
+            color: #fff;
+        }
+        @keyframes glowingBackground {
+            0%, 100% {
+                filter: hue-rotate(30deg);
+            }
+            50% {
+                filter: hue-rotate(-30Deg); /* Adjust the degree to get the desired red hue */
+            }
+        }
+        .welcome-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .welcome-text {
+            font-size: 32px;
+            font-family: 'Pacifico', cursive; /* Example of an artistic font */
+            color: #4CAF50; /* Green color for emphasis */
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .user-avatar {
+            width: 10-px;
+            height: 10-px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }

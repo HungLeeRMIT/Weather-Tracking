@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Sign_In.css">
+    <script  src="HeadAndFooter.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <title>Sign In</title>
+
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-and-title">
+                <a href="/" class="logo-title-link">
+                    <div class="logo">
+                        <img src="logo.png" alt="Climate Insight Logo">
+                    </div>
+                    <div class="title">
+                        <h1>Climate Insight</h1>
+                    </div>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a id="home-link" href="/">Home</a></li>
+                <li class="dropdown">
+                    <a id="detail-link" href="Population.html">Detail View</a>
+                    <li class="dropdown">
+                        <a id="analytic-tools-link" href="javascript:void(0);">Analytic Tools</a>
+                        <div class="dropdown-content">
+                            <a href="CompareData.html">Compare Data</a>
+                            <a href="FindSimilar.html">Find Similar</a>
+                        </div>
+                    </li>
+                </li>
+                <li><a id="mission-link" href="Mission.html">Mission</a></li>
+                <li><a id="forecast-link" href="Forecast.html">Forecast</a></li>
+                <li><a id="FAQ-link" href="FAQ.html">FAQ</a></li>
+                <li><a id="resources" href="Resources.html">Resources</a></li>
+                <li><a id="about-link" href="AboutUs.html">About Us</a></li>
+            </ul>
+            <div class="user-auth">
+                <div class="user-icon-dropdown">
+                    <img src="usericon.png" alt="User" class="user-avatar-img" onclick="toggleUserDropdown()">
+                    <div id="userDropdown" class="user-dropdown-content">
+                        <a href="Sign_In.html">Sign In</a>
+                        <a href="Sign_Up.html">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+            <div class="responsive-menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    
+    <div class="bg-image">
+        <div class="login-container">
+            <h2>Sign in</h2>
+            <form id="loginForm" onsubmit="return signIn()">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="usernameInput" placeholder="Username" required>
+                </div>
+                <div class="form-group password-group">
+                    <input type="password" class="form-control" id="password-input" placeholder="Password" required>
+                    <i class="fas fa-eye toggle-password" onclick="togglePassword()"></i>
+                </div>
+                <button type="submit" class="btn btn-custom">Sign In</button>
+            </form>
+            <div class="login-footer">
+                <div class="forgot-password">
+                    <a href="#">Forgot Password?</a>
+                </div>
+            </div>
+            <div class="social-signup">
+                <span class="social-icon">
+                    <i class="fab fa-google"></i>
+                </span>
+                <span class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Welcome Overlay -->
+    <div id="welcomeOverlay" class="welcome-overlay">
+        <div class="user-avatar">
+            <!-- You can replace the placeholder image with the user's actual avatar -->
+            <img src="usericon.png" alt="User Avatar">
+        </div>
+        <div class="welcome-text" id="welcomeText"></div>
+        Redirecting...
+    </div>
+
+
+
+    <script>
+        function togglePassword() {
+            var passwordInput = document.getElementById('password-input');
+            var toggleIcon = document.querySelector('.toggle-password');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        function signIn() {
+    var username = document.getElementById('usernameInput').value;
+    // Add your actual authentication logic here
+
+    // Assuming authentication is successful:
+    localStorage.setItem('isUserLoggedIn', 'true');
+    window.location.href = '/';
+    return false;
+}
+        function showWelcomeOverlay(username) {
+            var welcomeOverlay = document.getElementById('welcomeOverlay');
+            var welcomeText = document.getElementById('welcomeText');
+            welcomeText.innerHTML = `Welcome back, <strong>${username}</strong>!`;
+            welcomeOverlay.style.display = 'flex';
+        }
+    </script>
+
+
+
+<script>
+    function signIn() {
+var username = document.getElementById('usernameInput').value;
+// Add your actual authentication logic here
+
+// Assuming authentication is successful:
+localStorage.setItem('isUserLoggedIn', 'true');
+
+// Show welcome message
+showWelcomeOverlay(username);
+
+// Prevent form from submitting and refreshing the page
+return false;
+}
+
+function showWelcomeOverlay(username) {
+var welcomeOverlay = document.getElementById('welcomeOverlay');
+var welcomeText = document.getElementById('welcomeText');
+welcomeText.innerHTML = `Welcome back, <strong>${username}</strong>!`;
+welcomeOverlay.style.display = 'flex';
+
+// Set a timeout to redirect after showing the message
+setTimeout(function() {
+    window.location.href = '/';
+}, 3000); // Adjust time as needed for how long the message should show
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Resources.css">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script  src="HeadAndFooter.js"></script>
+    <script src="ie10-viewport-bug-workaround.js"></script>
+    <script src="jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="app.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="holder.min.js"></script>
+    <script src="Resources.js"></script>
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <title>Resources</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-and-title">
+                <a href="/" class="logo-title-link">
+                    <div class="logo">
+                        <img src="logo.png" alt="Climate Insight Logo">
+                    </div>
+                    <div class="title">
+                        <h1>Climate Insight</h1>
+                    </div>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a id="home-link" href="/">Home</a></li>
+                <li class="dropdown">
+                    <a id="detail-link" href="Population.html">Detail View</a>
+                    <li class="dropdown">
+                        <a id="analytic-tools-link" href="javascript:void(0);">Analytic Tools</a>
+                        <div class="dropdown-content">
+                            <a href="CompareData.html">Compare Data</a>
+                            <a href="FindSimilar.html">Find Similar</a>
+                        </div>
+                    </li>
+                </li>
+                <li><a id="mission-link" href="Mission.html">Mission</a></li>
+                <li><a id="forecast-link" href="Forecast.html">Forecast</a></li>
+                <li><a id="FAQ-link" href="FAQ.html">FAQ</a></li>
+                <li><a id="resources" href="Resources.html">Resources</a></li>
+                <li><a id="about-link" href="AboutUs.html">About Us</a></li>
+            </ul>
+            <div class="user-auth">
+                <div class="user-icon-dropdown">
+                    <img src="usericon.png" alt="User" class="user-avatar-img" onclick="toggleUserDropdown()">
+                    <div id="userDropdown" class="user-dropdown-content">
+                        <a href="Sign_In.html">Sign In</a>
+                        <a href="Sign_Up.html">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+            <div class="responsive-menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+
+    
+    <div class="persona-heading-container">
+        <h1 class="persona-heading">Persona</h1>
+    </div>
+
+    <section class="user-cards">
+        <div class="container">
+            <div class="row">
+                <!-- Persona Card 1 -->
+                <div th:each="persona : ${personas}" class="column" onclick="toggleInfo(this)">
+                    <div class="card1">
+                        <img th:src="@{${persona.image}}" class="image">
+                        <div class="container">
+                            <h2 th:text="${persona.name}"></h2>
+                            <h2 th:text="${persona.quote}" style="color: rgb(0, 166, 127);"></h2>
+                            <a class="read-more" onclick="toggleInfo(event, this.parentElement.parentElement.parentElement)">Read More</a>
+                            <a class="read-less" style="display: none;" onclick="toggleInfo(event, this.parentElement.parentElement.parentElement)">Read Less</a>
+                            <div class="additional-info" style="display: none;">
+                                <p class="title">Attribute/Background:</p>
+                                <p th:text="${persona.age}"> </p> 
+                                <p th:text="${persona.role}"> </p> 
+                                <p th:text="${persona.otherattribute1}"> </p> 
+                                <p th:text="${persona.otherattribute2}"> </p>
+                                  Needs and Goals: <p class="title"></p> 
+                                <p th:text="${persona.need}"> </p> 
+                                <p th:text="${persona.goal}"></p> 
+                                  Skill & Experience Levels: <p class="title"></p>
+                                <p th:text="${persona.skill}"></p>
+                                <p th:text="${persona.experience}"></p> 
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+        </div>
+    </section>
+
+
+    
+    <div class="persona-heading-container">
+        <h1 class="persona-heading">Download Extended Resources</h1>
+    </a>
+</div>
+
+
+<section class="courses">
+<div class="container">
+  <div class="masterclass">
+
+    <article class="card-masterclass">
+      <div class="img-mastercover">
+        <img src="travel.png" alt="Best places to visit">
+      </div>
+      <div class="card-text-area">
+        <h3>Best places to visit this season</h3>
+        <p>Dive into our collection of beautiful destinations and make the most of your travel experience.</p>
+        <button class="btn-try-out"><a href="Travel.html">Try Out</a></button>
+      </div>
+      <button id="downloadButton2" class="download-btn">Download</button>
+      <div id="downloadStatus2" class="download-status" hidden>
+          <span id="percentage2">0%</span>
+          <div class="progress-bar">
+              <div id="progress2" class="progress"></div>
+          </div>
+      </div>
+  </article>
+    <!-- Card 3 -->
+    <article class="card-masterclass">
+      <div class="img-mastercover">
+        <img src="planet.png" alt="Future Home Selection">
+      </div>
+      <div class="card-text-area">
+        <h3>Future Home Selection</h3>
+        <p>Explore new horizons with our space travel options and find your dream home among the stars.</p>
+        <button class="btn-try-out"><a href="Planet.html">Try Out</a></button>
+      </div>
+      <button id="downloadButton3" class="download-btn">Download</button>
+      <div id="downloadStatus3" class="download-status" hidden>
+          <span id="percentage1">0%</span>
+          <div class="progress-bar">
+              <div id="progress3" class="progress"></div>
+          </div>
+      </div>
+  </article>
+
+    <!-- Card 5 -->
+    <article class="card-masterclass">
+      <div class="img-mastercover">
+        <img src="fish.png" alt="Save our water, Save the fish">
+      </div>
+      <div class="card-text-area">
+        <h3>Save our water, Save the fish</h3>
+        <p>Play the game that has been design to stimulate if we stop to take care for our Environment</p>
+        <button class="btn-try-out"><a href="Fish.html">Try Out</a></button>
+      </div>
+      <button id="downloadButton5" class="download-btn">Download</button>
+      <div id="downloadStatus5" class="download-status" hidden>
+          <span id="percentage5">0%</span>
+          <div class="progress-bar">
+              <div id="progress5" class="progress"></div>
+          </div>
+      </div>
+  </article>
+    <!-- Card 6 -->
+    <article class="card-masterclass">
+      <div class="img-mastercover">
+        <img src="clock.png" alt="Multi-functional Clock">
+      </div>
+      <div class="card-text-area">
+        <h3>Multi-functional Clock</h3>
+        <p>Having fun with a Multi-functional Clock, where you could have relax time after work</p>
+        <button class="btn-try-out"><a href="Clock.html">Try Out</a></button>
+      </div>
+      <button id="downloadButton6" class="download-btn">Download</button>
+      <div id="downloadStatus6" class="download-status" hidden>
+          <span id="percentage6">0%</span>
+          <div class="progress-bar">
+              <div id="progress6" class="progress"></div>
+          </div>
+      </div>
+  </article>
+  </div>
+  <button class="btn-secondary"><a href="#">All the Masterclass</a></button>
+</div>
+</section>
+
+
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Organisation</h4>
+                <ul>
+                    <li><a href="/">Overview</a></li>
+                    <li><a href="Mission.html">Mission</a></li>
+                    <li><a href="Resources.html">Resources</a></li>
+                    <li><a href="AboutUs.html">About us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get help</h4>
+                <ul>
+                    <li><a href="FAQ.html#how-to-use-section">How it works</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                    <li><a href="Forecast.html">Forecast</a></li>
+                    <li><a href="AboutUs.html">Contact us</a></li>
+                    <li><a href="Payment.html">payment options</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Event</h4>
+                <ul>
+                    <li><a href="Event.html">Charity</a></li>
+                    <li><a href="Event.html">Blue Sea </a></li>
+                    <li><a href="Event.html">Green Globe</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>follow us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/satrmithanoi"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.rmit.edu.vn/vi"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/rmituniversityvietnam/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/school/rmit-university-vietnam/?originalSubdomain=vn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="updates-section">
+            <form>
+                <div style="color:white"><h3>Get update</h3> </div>
+                <input type="email" placeholder="Enter your email " required>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <p style="color: #e91e63;">© Copyright Team-HN-G03-COSC3056 2024. All Rights Reserved | Designed and Developed by Team-HN-G03-COSC3056</p>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+</html>

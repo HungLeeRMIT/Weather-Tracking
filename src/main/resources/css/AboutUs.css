@@ -1,0 +1,91 @@
+.team-section-container {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.team-section-container h2 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+.team-section-container p {
+  font-size: 1em;
+  margin-bottom: 2em;
+}
+
+.team-section {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.team-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 250px; /* Adjusted width for better spacing */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto; /* Centers the card in the available space */
+}
+
+.team-card img {
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.team-member-details {
+  padding: 15px;
+  text-align: right;
+  width: 100%;
+}
+
+.team-member-socials {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.team-member-socials a {
+  color: #333;
+  text-decoration: none;
+}
+
+.team-member-name {
+  font-weight: bold; /* Makes the text bold */
+  margin: 5px 0;
+}
+
+.team-member-role {
+margin: 5px 0; /* provides spacing between name and role */
+}
+
+.team-member-info {
+  padding: 10px;
+  padding-bottom: 20px; /* additional padding at the bottom */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers the text within the card */
+  background: #FFF; /* background color to match the card */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .team-section {
+    flex-direction: column;
+  }
+
+  .team-card {
+    width: 80%; /* Adjust width for tablet view */
+  }
+}
+
+@media (max-width: 480px) {
+  .team-card {
+    width: 95%; /* Adjust width for mobile view */
+  }
+}

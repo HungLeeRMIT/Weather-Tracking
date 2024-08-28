@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Temperature.css">
+    <script  src="HeadAndFooter.js"></script>
+    <script  src="Chart.js"></script>
+    <script  src="D3.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Temperature</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-and-title">
+                <a href="/" class="logo-title-link">
+                    <div class="logo">
+                        <img src="logo.png" alt="Climate Insight Logo">
+                    </div>
+                    <div class="title">
+                        <h1>Climate Insight</h1>
+                    </div>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a id="home-link" href="/">Home</a></li>
+                <li class="dropdown">
+                    <a id="detail-link" href="Population.html">Detail View</a>
+                    <li class="dropdown">
+                        <a id="analytic-tools-link" href="javascript:void(0);">Analytic Tools</a>
+                        <div class="dropdown-content">
+                            <a href="CompareData.html">Compare Data</a>
+                            <a href="FindSimilar.html">Find Similar</a>
+                        </div>
+                    </li>
+                </li>
+                <li><a id="mission-link" href="Mission.html">Mission</a></li>
+                <li><a id="forecast-link" href="Forecast.html">Forecast</a></li>
+                <li><a id="FAQ-link" href="FAQ.html">FAQ</a></li>
+                <li><a id="resources" href="Resources.html">Resources</a></li>
+                <li><a id="about-link" href="AboutUs.html">About Us</a></li>
+            </ul>
+            <div class="user-auth">
+                <div class="user-icon-dropdown">
+                    <img src="usericon.png" alt="User" class="user-avatar-img" onclick="toggleUserDropdown()">
+                    <div id="userDropdown" class="user-dropdown-content">
+                        <a href="Sign_In.html">Sign In</a>
+                        <a href="Sign_Up.html">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+            <div class="responsive-menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-heading">
+        <h2>Temperature Changes Over Time</h2>
+    </div>
+
+    <div class="detail-view-container">
+        <aside class="side-nav" >
+            <!-- Search Form -->
+            <div class="search-container">
+                <form method="post" action="/searchTemp" class="search-form">
+                    <input type="text" name="search" class="search-input" placeholder="Enter a country" aria-label="Search by country">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+
+            <div class="sorting-container">
+                <form method="post" action="/sortTemp" class="sorting-form">
+                    <div class="sort-btn">
+                        <label for="sort-name" class="sort-label">Name:</label>
+                        <button id="sort-name" th:style="${sortby} == 'nameasc' ? 'background-color: #007bff;' : 'background-color: white;'" type="submit" name="sortby" value="nameasc" class="sort-button fas fa-sort-alpha-down" aria-label="Sort by name ascending" onclick="saveScrollPositionAndSubmit(this)"></button>
+                        <button th:style="${sortby} == 'namedesc' ? 'background-color: #007bff;' : 'background-color: white;'" type="submit" name="sortby" value="namedesc" class="sort-button fas fa-sort-alpha-up" aria-label="Sort by name descending" onclick="saveScrollPositionAndSubmit(this)"></button>
+                    </div>
+                    <div class="sort-btn">
+                        <label for="sort-population" class="sort-label">Population:</label>
+                        <button id="sort-population" th:style="${sortby} == 'popasc' ? 'background-color: #007bff;' : 'background-color: white;'" type="submit" name="sortby" value="popasc" class="sort-button fas fa-sort-amount-down" aria-label="Sort by population ascending" onclick="saveScrollPositionAndSubmit(this)"></button>
+                        <button th:style="${sortby} == 'popdesc' ? 'background-color: #007bff;' : 'background-color: white;'" type="submit" name="sortby" value="popdesc" class="sort-button fas fa-sort-amount-up" aria-label="Sort by population descending" onclick="saveScrollPositionAndSubmit(this)"></button>
+                    </div>
+                    <div class="sort-btn">
+                        <label for="sort-temperature" class="sort-label">Temperature:</label>
+                        <button id="sort-temperature" th:style="${sortby} == 'tempasc' ? 'background-color: #007bff;' : 'background-color: white;'" type="submit" name="sortby" value="tempasc" class="sort-button fas fa-sort-amount-down" aria-label="Sort by temperature ascending" onclick="saveScrollPositionAndSubmit(this)"></button>
+                        <button th:style="${sortby} == 'tempdesc' ? 'background-color: #007bff;' : 'background-color: white;'" type="submit" name="sortby" value="tempdesc" class="sort-button fas fa-sort-amount-up" aria-label="Sort by temperature descending" onclick="saveScrollPositionAndSubmit(this)"></button>
+                    </div>
+                </form>
+            </div>
+            
+                <form action="/selectCountryTemp" method="post" class="country-select-form">
+                    <label for="country" class="country-select-label">Select a country:</label>
+                <select id="country" class="country-list" name="country" size="9" onchange="saveScrollPositionAndSubmit(this)">
+                    <option th:each="country : ${countries}" th:value="${country.countryCode}" th:text="${country.countryName}"></option>
+                </select>
+            </form>
+        </aside>
+
+
+
+        <div class="content-area">
+            <!-- Info Box -->
+            <div class="info-box">
+                <h1 th:text="${selectedCountry}">Select Country</h1>
+            </div>
+
+            <div class="info-box">
+                <h2 class="info-btn" id="population-btn">
+                    <a href="Population.html" onclick="saveScrollPositionAndSubmit(this)">Population</a>
+                </h2>
+                <h2 class="info-btn active" id="temperature-btn">
+                    <a href="Temperature.html" onclick="saveScrollPositionAndSubmit(this)">Temperature</a>
+                </h2>
+            </div>
+
+            <div class="filter-box">
+                <h3>Compare data between 2 years of the whole region</h3>
+                <div class="year-selection">
+                    <div class="year-dropdown">
+                        <b> Selected start year: </b>
+                        <form style="display:inline" action="/getStartYearTemp" method="post">
+                            <select id="start-year" name="startYear" onchange="saveScrollPositionAndSubmit(this)">
+                                <option value="" disabled selected> --Select start year-- </option>
+                                <option th:each="year : ${startYears}" th:text="${year}" th:value="${year}" th:selected="${year == selectedStartYear}" ></option>
+                                <!-- Placeholder for API-generated year options -->
+                            </select>
+                        </form>
+                    </div>
+                    <div class="year-dropdown">
+                        <b> Selected start year: </b>
+                        <form style="display:inline" action="/getEndYearTemp" method="post">
+                        <select id="end-year" name="endYear" onchange="saveScrollPositionAndSubmit(this)">
+                            <option value=""> --Select end year-- </option>
+                            <option th:each="year : ${endYears}" th:text="${year}" th:value="${year}" th:selected="${year == selectedEndYear}"></option>
+                            <!-- Placeholder for API-generated year options -->
+                        </select>
+                        </form>
+                    </div>
+                </div>
+                <div class="data-changes-box">
+                    <div th:each="temperature : ${temperatures}" id="temperature-results-container">
+                        <p id="start-year-avg-temperature">Average Temperature in <span th:text="${selectedStartYear}"></span>: 
+                            <span th:if="${temperature.startAmount} != '0.00'" th:text="${temperature.startAmount}" id="start-avg-temperature">X.XXX</span> 
+                            <span th:if="${temperature.startAmount} == '0.00'"  id="start-avg-temperature">X.XXX</span> <span> &deg;C </span></p>
+                        <p id="start-year-min-temperature">Min Temperature in <span th:text="${selectedStartYear}"></span>: 
+                            <span th:if="${temperature.startAmountMin} != '0.00'" th:text="${temperature.startAmountMin}" id="start-avg-temperature">X.XXX</span>
+                            <span th:if="${temperature.startAmountMin} == '0.00'"  id="start-avg-temperature">X.XXX</span><span> &deg;C </span></p>
+                        <p id="start-year-max-temperature">Max Temperature in <span th:text="${selectedStartYear}"></span>: 
+                            <span th:if="${temperature.startAmountMax} != '0.00'" th:text="${temperature.startAmountMax}" id="start-avg-temperature">X.XXX</span>
+                            <span th:if="${temperature.startAmountMax} == '0.00'"  id="start-avg-temperature">X.XXX</span><span> &deg;C </span></p>
+                        <p id="new-line"></p>
+                        <p id="end-year-avg-temperature">Average Temperature in <span th:text="${selectedStartYear}"></span>: 
+                            <span th:if="${temperature.endAmount} != '0.00'" th:text="${temperature.endAmount}" id="start-avg-temperature">X.XXX</span>
+                            <span th:if="${temperature.endAmount} == '0.00'"  id="start-avg-temperature">X.XXX</span><span> &deg;C </span></p>
+                        <p id="end-year-min-temperature">Min Temperature in <span th:text="${selectedEndYear}"></span>: 
+                            <span th:if="${temperature.endAmountMin} != '0.00'" th:text="${temperature.endAmountMin}" id="start-avg-temperature">X.XXX</span>
+                            <span th:if="${temperature.endAmountMin} == '0.00'"  id="start-avg-temperature">X.XXX</span><span> &deg;C </span></p>
+                        <p id="end-year-max-temperature">Max Temperature in <span th:text="${selectedEndYear}"></span>: 
+                            <span th:if="${temperature.endAmountMax} != '0.00'" th:text="${temperature.endAmountMax}" id="start-avg-temperature">X.XXX</span>
+                            <span th:if="${temperature.endAmountMax} == '0.00'"  id="start-avg-temperature">X.XXX</span><span> &deg;C </span></p>
+                        <p id="new-line"></p>
+                        <p id="avg-temperature-change">Average Temperature Changes: 
+                            <span th:if="${temperature.change} != '0.00'" th:text="${temperature.change}" id="avg-temperature-change-percent"></span>
+                            <span th:if="${temperature.change} == '0.00'"  id="avg-temperature-change-percent"> Data Not Available </span>%</p>
+                        <p id="min-temperature-change">Min Temperature Changes: 
+                            <span th:if="${temperature.changeMin} != '0.00'" th:text="${temperature.changeMin}" id="min-temperature-change-percent"></span>
+                            <span th:if="${temperature.changeMin} == '0.00'"  id="min-temperature-change-percent"> Data Not Available </span>%</p>
+                        <p id="max-temperature-change">Max Temperature Changes: 
+                            <span th:if="${temperature.changeMax} != '0.00'" th:text="${temperature.changeMax}" id="max-temperature-change-percent"></span>
+                            <span th:if="${temperature.changeMax} == '0.00'"  id="max-temperature-change-percent"> Data Not Available </span>%</p>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 0px 0px 0px 0px;">
+            <div class="table-container">
+                <div class="selector-and-ranking">
+                    <!-- Using radio buttons for selection -->
+                    <form style="color:black;text-align: center;" method="post" action="/viewBy">
+                        <button  type="submit" style="color:black;margin: 0 auto; display: inline-block;" th:style="${viewBy} == 'state' ? 'background-color: #007bff;' : 'background-color: white;'" id="selectState" name="viewBy" value="state" onclick="saveScrollPositionAndSubmit(this)" checked> View By State </button>
+                        <button type="submit" style="color:black;margin: 0 auto; display: inline-block;" th:style="${viewBy} == 'city' ? 'background-color: #007bff;' : 'background-color: white;'" id="selectCity" name="viewBy" value="city" onclick="saveScrollPositionAndSubmit(this)"> View by City </button>    
+                    </form>
+                    
+                    <!-- Ranking buttons (would need JavaScript to sort) -->
+                </div>
+
+                
+            <!--th:if="${cities}!= null" th:if="${states} != null"-->
+
+
+            <!--<form style="display: inline-block;" method="post" action="/cityOrState">
+                City or state form
+                
+
+                <select th:if="${cities != null && !cities.isEmpty()}" style="width:100%;" id="start-year" name="cityOrState" onchange="saveScrollPositionAndSubmit(this)">
+                    <option value=""> --Select a city-- </option>
+                    <option th:each="city : ${cities}" th:text="${city.cityName}" th:value="${city.city_id}"></option>
+                </select>
+                <select th:if="${states != null && !states.isEmpty()}" style="width:100%;" id="end-year" name="cityOrState" onchange="saveScrollPositionAndSubmit(this)">
+                    <option value=""> --Select a state-- </option>
+                    <option th:each="state : ${states}" th:text="${state.stateName}" th:value="${state.state_id}"></option>
+                </select>
+            </form>-->
+            
+            <form style="display: inline-block; float:left;" method="post" action="/rank">
+                    <b style="display:inline">  Rank by:  </b>
+                    <button id="sort-name" th:style="${rank} == 'avg' ? 'background-color: #007bff;' : 'background-color: white;'" type="radio" name="rank" value="avg" class="sort-button" aria-label="Sort by name ascending" onclick="saveScrollPositionAndSubmit(this)"> Avg Temp Change</button>
+                    <button id="sort-name" th:style="${rank} == 'min' ? 'background-color: #007bff;' : 'background-color: white;'" type="radio" name="rank" value="min" class="sort-button" aria-label="Sort by name ascending" onclick="saveScrollPositionAndSubmit(this)"> Min Temp Change </button>
+                    <button id="sort-name" th:style="${rank} == 'max' ? 'background-color: #007bff;' : 'background-color: white;'" type="radio" name="rank" value="max" class="sort-button" aria-label="Sort by name ascending" onclick="saveScrollPositionAndSubmit(this)"> Max Temp Change</button>
+            </form>
+            
+            
+                <!-- State Table -->
+                <table th:if="${viewBy} == 'state'" id="state-table" class="data-table">
+                    <thead style="text-align: center;">
+                        <tr>
+                            <th>State</th>
+                            <th>Avg Temp Start</th>
+                            <th>Avg Temp End</th>
+                            <th>Avg Temp Change</th>
+                            <th>Min Temp Start</th>
+                            <th>Min Temp End</th>
+                            <th>Min Temp Change</th>
+                            <th>Max Temp Start</th>
+                            <th>Max Temp End</th>
+                            <th>Max Temp Change</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- State data rows -->
+                        <tr th:each="state : ${stateChange}">
+                            <td th:text="${state.stateOrCityName}"> </td>
+                            <td th:text="${state.startAmount} + '&deg;C'"> </td>
+                            <td th:text="${state.endAmount} + '&deg;C'"> </td>
+                            <td th:text="${state.change} + '%'"> </td>
+                            <td th:text="${state.startAmountMin} + '&deg;C'"> </td>
+                            <td th:text="${state.endAmountMin} + '&deg;C'"> </td>
+                            <td th:text="${state.changeMin}+ '%'"> </td>
+                            <td th:text="${state.startAmountMax} +'&deg;C'"> </td>
+                            <td th:text="${state.endAmountMax} + '&deg;C'"> </td>
+                            <td th:text="${state.changeMax} + '%'"> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            
+                <!-- City Table -->
+                <table th:if="${viewBy} == 'city'" id="city-table" class="data-table">
+                    <thead style="text-align: center;">
+                        <tr>
+                                <th>City</th>
+                                <th>Avg Temp Start</th>
+                                <th>Avg Temp End</th>
+                                <th>Avg Temp Change</th>
+                                <th>Min Temp Start</th>
+                                <th>Min Temp End</th>
+                                <th>Min Temp Change</th>
+                                <th>Max Temp Start</th>
+                                <th>Max Temp End</th>
+                                <th>Max Temp Change</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- City data rows -->
+                        <tr th:each="city : ${cityChange}">
+                            <td th:text="${city.stateOrCityName}"> xxxx</td>
+                            <td th:text="${city.startAmount} + '&deg;C'">xxx </td>
+                            <td th:text="${city.endAmount} + '&deg;C'"> xx</td>
+                            <td th:text="${city.change} + '%'">xx </td>
+                            <td th:text="${city.startAmountMin} + '&deg;C'">xx </td>
+                            <td th:text="${city.endAmountMin} + '&deg;C'">xx </td>
+                            <td th:text="${city.changeMin} + '%'"> xx</td>
+                            <td th:text="${city.startAmountMax} + '&deg;C'">xx </td>
+                            <td th:text="${city.endAmountMax} + '&deg;C'">xx </td>
+                            <td th:text="${city.changeMax} + '%'">xx </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+            
+        </div>
+
+        
+
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Organisation</h4>
+                <ul>
+                    <li><a href="/">Overview</a></li>
+                    <li><a href="Mission.html">Mission</a></li>
+                    <li><a href="Resources.html">Resources</a></li>
+                    <li><a href="AboutUs.html">About us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get help</h4>
+                <ul>
+                    <li><a href="FAQ.html#how-to-use-section">How it works</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                    <li><a href="Forecast.html">Forecast</a></li>
+                    <li><a href="AboutUs.html">Contact us</a></li>
+                    <li><a href="Payment.html">payment options</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Event</h4>
+                <ul>
+                    <li><a href="Event.html">Charity</a></li>
+                    <li><a href="Event.html">Blue Sea </a></li>
+                    <li><a href="Event.html">Green Globe</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>follow us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/satrmithanoi"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.rmit.edu.vn/vi"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/rmituniversityvietnam/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/school/rmit-university-vietnam/?originalSubdomain=vn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="updates-section">
+            <form>
+                <div style="color:white"><h3>Get update</h3> </div>
+                <input type="email" placeholder="Enter your email " required>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <p style="color: #e91e63;">© Copyright Team-HN-G03-COSC3056 2024. All Rights Reserved | Designed and Developed by Team-HN-G03-COSC3056</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const populationBtn = document.getElementById('population-btn');
+    const temperatureBtn = document.getElementById('temperature-btn');
+
+    function makeActive(btn) {
+        // Remove 'active' class from both buttons
+        populationBtn.classList.remove('active');
+        temperatureBtn.classList.remove('active');
+
+        // Add 'active' class to the specified button
+        btn.classList.add('active');
+    }
+
+    // Event listeners for buttons
+    populationBtn.addEventListener('click', function() { makeActive(populationBtn); });
+    temperatureBtn.addEventListener('click', function() { makeActive(temperatureBtn); });
+
+    // Check the URL and set the active button accordingly
+    if (window.location.pathname.includes('Temperature.html')) {
+        makeActive(temperatureBtn);
+    } else if (window.location.pathname.includes('Population.html')) {
+        makeActive(populationBtn);
+    } else {
+        // Default to Temperature if no specific page is found or another condition
+        makeActive(temperatureBtn);
+    }
+});
+
+
+        </script>
+
+
+
+    <script>
+        function saveScrollPositionAndSubmit(selectElement) {
+            localStorage.setItem('scrollPosition', window.scrollY || document.documentElement.scrollTop);
+            selectElement.form.submit();
+        }
+        
+        window.onload = function() {
+            var savedScrollPosition = localStorage.getItem('scrollPosition');
+            if (savedScrollPosition) {
+                window.scrollTo(0, parseInt(savedScrollPosition));
+                localStorage.removeItem('scrollPosition');
+            }
+        }
+        </script>
+
+        <script>
+            function toggleTable() {
+                // Check which radio button is checked
+                var stateSelected = document.getElementById('selectState').checked;
+                var citySelected = document.getElementById('selectCity').checked;
+            
+                // Get the tables
+                var stateTable = document.getElementById('state-table');
+                var cityTable = document.getElementById('city-table');
+            
+                // Show or hide tables based on the radio button selected
+                if (stateSelected) {
+                    stateTable.style.display = 'table';
+                    cityTable.style.display = 'none';
+                } else if (citySelected) {
+                    stateTable.style.display = 'none';
+                    cityTable.style.display = 'table';
+                }
+            }
+            
+            // Call toggleTable on page load and when the radio buttons change
+            window.onload = function() {
+                toggleTable(); // Call when the page loads
+                var savedScrollPosition = localStorage.getItem('scrollPosition');
+                if (savedScrollPosition) {
+                    window.scrollTo(0, parseInt(savedScrollPosition));
+                    localStorage.removeItem('scrollPosition');
+                }
+            }
+            
+            // Add event listeners to the radio buttons
+            document.getElementById('selectState').addEventListener('change', toggleTable);
+            document.getElementById('selectCity').addEventListener('change', toggleTable);
+            
+        </script>
+</body>
+</html>

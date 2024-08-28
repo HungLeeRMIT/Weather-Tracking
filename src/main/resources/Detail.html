@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Map.css">
+    <script  src="HeadAndFooter.js"></script>
+    <script type="text/javascript" src="mapdata.js"></script>
+    <script type="text/javascript" src="worldmap.js"></script>
+    <script type="text/javascript" src="list.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <title>Detail View</title>
+
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-and-title">
+                <a href="/" class="logo-title-link">
+                    <div class="logo">
+                        <img src="logo.png" alt="Climate Insight Logo">
+                    </div>
+                    <div class="title">
+                        <h1>Climate Insight</h1>
+                    </div>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a id="home-link" href="/">Home</a></li>
+                <li class="dropdown">
+                    <a id="detail-link" href="Population.html">Detail View</a>
+                    <li class="dropdown">
+                        <a id="analytic-tools-link" href="javascript:void(0);">Analytic Tools</a>
+                        <div class="dropdown-content">
+                            <a href="CompareData.html">Compare Data</a>
+                            <a href="FindSimilar.html">Find Similar</a>
+                        </div>
+                    </li>
+                </li>
+                <li><a id="mission-link" href="Mission.html">Mission</a></li>
+                <li><a id="forecast-link" href="Forecast.html">Forecast</a></li>
+                <li><a id="FAQ-link" href="FAQ.html">FAQ</a></li>
+                <li><a id="resources" href="Resources.html">Resources</a></li>
+                <li><a id="about-link" href="AboutUs.html">About Us</a></li>
+            </ul>
+            <div class="user-auth">
+                <div class="user-icon-dropdown">
+                    <img src="usericon.png" alt="User" class="user-avatar-img" onclick="toggleUserDropdown()">
+                    <div id="userDropdown" class="user-dropdown-content">
+                        <a href="Sign_In.html">Sign In</a>
+                        <a href="Sign_Up.html">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+            <div class="responsive-menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+
+    <div class="view-by-country-heading">
+        <h2>View by Country</h2>
+    </div>
+
+    <div class="dropdown-container">
+        <div class="dropdown">
+            <button onclick="toggleDropdown()" class="dropbtn">Select a Country</button>
+            <div id="myDropdown" class="dropdown-contents">
+                <input type="text" placeholder="Search..." id="myInput" onkeyup="filterFunction()">
+                <div id="country-list-containers">
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="map-container">
+            <div id="map"></div>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Organisation</h4>
+                    <ul>
+                        <li><a href="/">Overview</a></li>
+                        <li><a href="Mission.html">Mission</a></li>
+                        <li><a href="Resources.html">Resources</a></li>
+                        <li><a href="AboutUs.html">About us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get help</h4>
+                    <ul>
+                        <li><a href="FAQ.html#how-to-use-section">How it works</a></li>
+                        <li><a href="FAQ.html">FAQ</a></li>
+                        <li><a href="Forecast.html">Forecast</a></li>
+                        <li><a href="AboutUs.html">Contact us</a></li>
+                        <li><a href="Payment.html">payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Event</h4>
+                    <ul>
+                        <li><a href="Event.html">Charity</a></li>
+                        <li><a href="Event.html">Blue Sea </a></li>
+                        <li><a href="Event.html">Green Globe</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/satrmithanoi"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.rmit.edu.vn/vi"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/rmituniversityvietnam/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/school/rmit-university-vietnam/?originalSubdomain=vn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="updates-section">
+                <form>
+                    <div style="color:white"><h3>Get update</h3> </div>
+                    <input type="email" placeholder="Enter your email " required>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <p style="color: #e91e63;">© Copyright Team-HN-G03-COSC3056 2024. All Rights Reserved | Designed and Developed by Team-HN-G03-COSC3056</p>
+            </div>
+        </div>
+    </footer>
+    
+
+    <script>
+        // Assuming `simplemaps_worldmap` is your map instance
+        simplemaps_worldmap.hooks.click_state = function(id) {
+            window.location.href = "Country.html?country=" + encodeURIComponent(id);
+        };
+
+        // Initialize the map
+        simplemaps_worldmap.load();  // This might vary based on how your map is set up
+    </script>
+
+<script>
+    // Function to handle redirection to Country.html with the country ID
+    function redirectToCountryPage(countryId) {
+        window.location.href = "Country.html?country=" + encodeURIComponent(countryId);
+    }
+
+    // Populate dropdown with countries
+    function populateDropdown() {
+        var dropdown = document.getElementById("country-list-containers");
+        var countries = simplemaps_worldmap_mapdata.state_specific;
+        for (var country_id in countries) {
+            if (countries.hasOwnProperty(country_id)) {
+                var country_name = countries[country_id].name;
+                var elem = document.createElement("a");
+                elem.textContent = country_name;
+
+                // Create a closure to capture the current country ID
+                (function(id) {
+                    elem.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        redirectToCountryPage(id); // Redirect using the captured country ID
+                    });
+                })(country_id);
+
+                dropdown.appendChild(elem);
+            }
+        }
+    }
+
+    function filterFunction() {
+        var input, filter, div, a, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        div = document.getElementById("myDropdown");
+        a = div.getElementsByTagName("a");
+        for (i = 0; i < a.length; i++) {
+            var txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                a[i].style.display = "";
+            } else {
+                a[i].style.display = "none";
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        populateDropdown(); // Call the populate function on DOM ready
+    });
+</script>
+
+</body>
+</html>
+
+
+
+    

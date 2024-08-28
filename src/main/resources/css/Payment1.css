@@ -1,0 +1,366 @@
+/* CSS for Navbar and Footer only */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#040909 60vh, #312c2a 80vh);
+}
+
+header {
+    background: linear-gradient(120deg, #7f70f5, #0ea0ff);
+}
+.user-avatar-link {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.user-avatar-img {
+    width: 60px; /* Adjust if needed to match the logo size */
+    height: 60px; /* Adjust if needed to match the logo size */
+}
+
+.user-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+
+.user-dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.user-dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.show {display: block;}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: linear-gradient(120deg, #7f70f5, #0ea0ff);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Dropdown Link Styles */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change Color of Dropdown Links on Hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the Dropdown Menu on Hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+.logo-and-title {
+    display: flex;
+    align-items: center; /* Aligns items vertically in the center */
+    padding-left: 60px; 
+}
+.logo-title-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Removes underline from the link */
+    color: inherit; /* Inherits the color from parent elements */
+}
+
+.logo img {
+    width: 60px;
+    height: auto;
+    margin-right: 10px; 
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-grow: 1; /* Allows the nav-links to fill the space */
+    justify-content: space-evenly; /* Evenly distributes the space around items */
+}
+
+.nav-links li {
+    padding: 10px 15px; /* Adds padding around each link for a larger click area */
+}
+.nav-links a:hover {
+    text-decoration: underline; /* Underline effect on hover */
+}
+
+.nav-links a.active {
+    text-decoration: underline;
+    text-underline-offset: 4px; /* Adjust the offset as needed to move the underline down */
+    padding-bottom: 5px; /* Adjust the padding to control the distance between text and underline */
+}
+.nav-links a:hover, .nav-links a.active {
+    color: #ffffff; /* Changes color on hover and when active */
+}
+
+.nav-links.active {
+    display: block; /* Adjust this as needed for your layout */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px; /* Increases the font size */
+    transition: color 0.3s ease; /* Smooth color transition for hover effect */
+}
+
+.user-icon img {
+    width: 60px;
+    height: auto;
+}
+
+.title h1 {
+    color: #fff;
+    font-size: 24px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    padding: 0;
+}
+
+.user-auth {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    margin-right: 60px; /* Add margin to move the user icon to the left */
+}
+
+
+.responsive-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 10px;
+}
+
+.responsive-menu span {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 3px 0;
+    border-radius: 3px;
+}
+
+
+.container1 {
+    max-width: 1170px;
+    margin: auto;
+    padding-bottom: 50px; /* Add space between navbar and footer */
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ul {
+    list-style: none;
+}
+
+.footer {
+    background-color: #24262b;
+    padding: 30px 0; /* Adjust the padding to make the footer smaller */
+}
+
+.footer-col {
+    width: 25%;
+    padding: 0px;
+}
+
+.footer-col h4 {
+    font-size: 18px;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: 500;
+    position: relative;
+}
+
+.footer-col h4::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: #e91e63;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}
+
+.footer-col ul li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #ffffff;
+    padding-left: 8px;
+}
+
+.footer-col .social-links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-right: 10px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.5s ease;
+}
+
+.footer-col .social-links a:hover {
+    background-color: #e91e63;
+    color: #ffffff;
+}
+
+.updates-section {
+    margin-top: 40px;
+}
+
+.updates-section input[type="email"] {
+    width: 30%;
+    padding: 10px;
+    background-color: #1f2024;
+    border: none;
+    color: #ffffff;
+    border-bottom: 2px solid #e91e63;
+    font-size: 16px;
+}
+
+.updates-section input[type="submit"] {
+    width: auto;
+    background-color: #e91e63;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.updates-section input[type="submit"]:hover {
+    background-color: #1f2024;
+    color: #e91e63;
+}
+
+/* Responsive Navbar */
+@media only screen and (max-width: 768px) {
+    .responsive-menu {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        background: linear-gradient(120deg, #7f70f5, #0ea0ff);
+        top: 80px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        z-index: 1000;
+        padding: 10px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+    }
+
+    .nav-links a {
+        padding: 10px 20px;
+        display: block;
+        width: 100%;
+        color: white;
+        font-size: 18px;
+    }
+}
+
+/* Responsive Footer */
+@media only screen and (max-width: 767px) {
+    .footer-col {
+        width: 50%;
+        padding: 10px;
+    }
+}
+
+@media only screen and (max-width: 574px) {
+    .footer-col {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+/* Additional Styles for Smaller Screens */
+@media only screen and (max-width: 375px) {
+    .logo img, .user-icon img {
+        width: 50px; /* Adjust logo size */
+    }
+
+    .title h1 {
+        font-size: 20px; /* Smaller font size for title */
+    }
+
+    .nav-links a {
+        font-size: 14px; /* Smaller font size for nav links */
+    }
+
+    .footer-col h4 {
+        font-size: 16px; /* Smaller font size for footer headings */
+    }
+
+    .footer-col ul li a {
+        font-size: 14px; /* Smaller font size for footer links */
+    }
+}

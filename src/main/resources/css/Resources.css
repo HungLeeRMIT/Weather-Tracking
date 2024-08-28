@@ -1,0 +1,348 @@
+/* CSS for the styled "Persona" heading */
+.persona-heading-container {
+  text-align: center; /* Center-align the heading */
+  margin-top: 40px; /* Add some top margin for spacing */
+}
+
+.persona-heading {
+  font-size: 32px; /* Increase the font size */
+  color: #333; /* Change the text color to a dark gray */
+  text-transform: uppercase; /* Convert text to uppercase for a professional look */
+  padding-bottom: 10px; /* Add space between text and underline */
+  margin-bottom: 20px; /* Add bottom margin for spacing */
+}
+
+.read-more, .read-less {
+  color: white;
+  background-color: rgb(0, 166, 127);
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.read-more:hover, .read-less:hover {
+  background-color: rgb(0, 136, 107); /* Darker color on hover */
+}
+
+/* CSS for User Cards */
+.user-cards {
+  background-color: #f5f5f5;
+  padding: 40px 0;
+}
+
+.user-cards .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.user-cards .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.user-cards .column {
+  flex-basis: calc(33.33% - 20px);
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.user-cards .column:hover {
+  transform: translateY(-5px);
+}
+
+.user-cards .card1 {
+  padding: 20px;
+}
+
+.user-cards .image {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.user-cards .container h2 {
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+.user-cards .container h2:first-child {
+  margin-top: 0;
+}
+
+.user-cards .title {
+  font-size: 18px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.user-cards p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* Add more styles for other elements as needed */
+
+.courses {
+  padding-bottom: 60px; /* Maintain or adjust bottom padding as needed */
+  background-color: #222222; /* Dark background for contrast */
+  color: #ffffff; /* Light text for readability */
+}
+
+.container {
+  max-width: 1170px;
+  margin: 0 auto; /* Center the container */
+  padding: 20px; /* Padding inside the container */
+}
+.container > h2,
+.container > p {
+  text-align: center;
+}
+.container, .row {
+  margin: 0 auto; /* Adjust 'auto' if needed */
+}
+
+.courses > *:first-child {
+  margin-top: 0;
+}
+
+.img-mastercover {
+  width: 100%;
+  display: block; /* This ensures that the image is a block-level element and occupies the full width of its container */
+}
+
+.img-mastercover img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+.img-mastercover:hover {
+  opacity: 0.5;
+}
+
+.img-mastercover {
+  background-image: url(https://www.logistec.com/wp-content/uploads/2017/12/placeholder.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  cursor: pointer;
+}
+.img-mastercover:hover .play-button {
+  display: flex;
+  z-index: 2;
+}
+
+
+/*  Masterclass */
+
+.masterclass {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Changed to center to align the cards in the center of the page */
+  gap: 30px; /* Maintains the gap between the cards */
+  padding: 20px; /* Add padding to ensure there's space around the edges */
+}
+
+.card-masterclass {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* This spreads out the content and pushes the button to the bottom */
+  position: relative;
+  height: 100%; /* Make sure all cards have the same height */
+}
+
+
+
+/*  Card Text  */
+.card-text-area {
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+  display: flex;
+  height: 100%;
+  padding: 20px;
+  background-color: #2c2c2c;
+  color: white;
+  flex-grow: 1; /* This will make the text area fill the space, pushing the button down */
+}
+
+.card-text-area h3 {
+  font-size: 20px; /* Font size for the title */
+  margin-bottom: 10px; /* Spacing below the title */
+}
+
+.card-text-area p {
+  font-size: 16px; /* Font size for the paragraph */
+  margin-bottom: 20px; /* Spacing below the paragraph */
+}
+
+.card-text-area h3,
+.card-text-area p {
+display: block; /* Ensures that the text is a block element */
+margin-left: auto; /* Centers the block element */
+margin-right: auto; /* Centers the block element */
+}
+
+.card-text-area:hover .img-mastercover {
+  opacity: 0.5;
+}
+
+.card-info-top {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 30px;
+}
+.card-info-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 40px;
+}
+
+.students,
+.length,
+.instructeur {
+  font-size: 12px;
+}
+
+/* Button  */
+
+.btn-secondary {
+  padding: 30px 40px;
+  border-radius: 30px;
+  border: 2px solid #313131;
+  background-color: #1e1e1e;
+  font-size: 18px;
+  display: block;
+  margin: auto;
+  transition: 0.2s;
+}
+
+.btn-secondary a {
+  color: white;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+  border: 2px solid #1e1e1e;
+}
+
+/* Add or modify CSS styles for the "try out" button */
+.btn-try-out {
+  margin-top: auto; /* This will push the button to the bottom */
+  align-self: center;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background-color: #328bb3;
+  color: white;
+  font-size: 16px;
+  margin: 20px auto ; /* Centers the button horizontally with auto margins and adds some margin at the top */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  display: inline-block; /* Makes the button a block-level element to fill the anchor tag */
+  text-align: center; /* Text alignment for the button text */
+}
+.btn-try-out a {
+  text-decoration: none; /* Removes underline from the link */
+  color: white; /* Set the link color */
+  display: block; /* Makes the anchor tag a block-level element, allowing it to contain the button properly */
+}
+
+
+.btn-try-out:hover {
+  background-color: rgba(252, 103, 84, 0.75);
+  transform: translateY(-3px); /* Slight lift effect */
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .card-masterclass {
+      flex: 0 1 calc(50% - 30px); /* Adjusts the card width to 50% for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .card-masterclass {
+      flex: 0 1 100%; /* Each card will take full width on very small screens */
+  }
+  .container h2 {
+      font-size: 1.5em; /* Smaller font size for mobile */
+  }
+
+  .container p {
+      font-size: 1em; /* Smaller font size for paragraphs on mobile */
+  }
+}
+
+.download-btn {
+  padding: 10px 20px;
+  border: 2px solid #00e5ff;
+  background-color: #000;
+  color: #00e5ff;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  position: relative; /* Ensure the download button has a stacking context */
+  z-index: 10;
+}
+
+.download-btn:hover {
+  background-color: #00e5ff;
+  color: #000;
+}
+
+.progress-container {
+  width: 30px; /* Width of the progress bar */
+  height: 150px; /* Height of the progress bar container */
+  background-color: #000; /* Background of the progress container */
+  border: 2px solid #00e5ff; /* Border color */
+  border-radius: 15px; /* Rounded corners for the container */
+  margin-top: 10px; /* Margin top for spacing */
+  position: relative; /* Relative position for absolute positioning of inner progress */
+}
+
+.progress-bar {
+width: 100%;
+background-color: #333; /* Light grey color to see the bar progress */
+height: 5px; /* Set the height of the progress bar */
+position: absolute;
+bottom: 0;
+left: 0;
+overflow: hidden;
+z-index: 1;
+}
+.progress {
+background-color: #00e5ff; /* Progress fill color */
+width: 0%; /* Start with no fill */
+height: 100%; /* Full height of the progress bar container */
+transition: width 0.5s ease-in-out;
+}
+
+
+.download-status {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+background-color: rgba(0, 0, 0, 0.7); /* Dark background for visibility */
+color: #00e5ff;
+z-index: 5;
+}

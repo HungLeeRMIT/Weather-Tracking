@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="FindSimilar.css">
+    <script>src="HeadAndFooter.js"</script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <title>Find regions and time periods with similar temperature or population</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-and-title">
+                <a href="/" class="logo-title-link">
+                    <div class="logo">
+                        <img src="logo.png" alt="Climate Insight Logo">
+                    </div>
+                    <div class="title">
+                        <h1>Climate Insight</h1>
+                    </div>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a id="home-link" href="/">Home</a></li>
+                <li class="dropdown">
+                    <a id="detail-link" href="Population.html">Detail View</a>
+                    <li class="dropdown">
+                        <a id="analytic-tools-link" href="javascript:void(0);">Analytic Tools</a>
+                        <div class="dropdown-content">
+                            <a href="CompareData.html">Compare Data</a>
+                            <a href="FindSimilar.html">Find Similar</a>
+                        </div>
+                    </li>
+    </li>
+                <li><a id="mission-link" href="Mission.html">Mission</a></li>
+                <li><a id="forecast-link" href="Forecast.html">Forecast</a></li>
+                <li><a id="FAQ-link" href="FAQ.html">FAQ</a></li>
+                <li><a id="resources" href="Resources.html">Resources</a></li>
+                <li><a id="about-link" href="AboutUs.html">About Us</a></li>
+            </ul>
+            <div class="user-auth">
+                <div class="user-icon-dropdown">
+                    <img src="usericon.png" alt="User" class="user-avatar-img" onclick="toggleUserDropdown()">
+                    <div id="userDropdown" class="user-dropdown-content">
+                        <a href="Sign_In.html">Sign In</a>
+                        <a href="Sign_Up.html">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+            <div class="responsive-menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2 class="main-title">Find regions and time periods with similar temperature or population</h2>
+        <p class="main-description">Discover all countries with similar temperature and population data Find states/cities with similar temperature data</p>
+        
+        <!-- Add Time Period Section -->
+        <div class="add-time-period-section">
+            <h3>Add time period</h3>
+            <!-- Form for adding time period (simplified for brevity) -->
+            <form style="display:inline" method="post" action="/selectCountrySimilar">
+                <select name="selectCountry" id="country" onchange="saveScrollPositionAndSubmit(this)">
+                        <option disabled selected>Select country</option>
+                        <option th:each="country : ${countries}" th:text="${country.countryName}" th:value="${country.countryCode}" th:selected="${country.countryCode == selectedCountrySimilar}"></option>
+                </select>
+            </form>
+    
+            <form style="display:inline" method="post" action="/selectCityOrStateSimilar">
+                <select id="state" th:if="${(states != null && !states.isEmpty()) }" name="selectState" class="dropdown1" onchange="saveScrollPositionAndSubmit(this)">
+                    <option disabled selected>Select state</option>
+                    <option th:each="state : ${states}" th:text="${state.stateName}" th:value="${state.state_id}" th:selected="${state.state_id == selectedStateSimilar}"></option>
+                </select>
+                <select th:placeholder="${selectedCitySimilar}"  id="City" th:if="${(cities != null && !cities.isEmpty()) }" name="selectCity" class="dropdown1" onchange="saveScrollPositionAndSubmit(this)">
+                    <option disabled selected>Select city</option>
+                    <option th:each="city : ${cities}" th:text="${city.cityName}" th:value="${city.city_id}" th:selected="${city.city_id == selectedCitySimilar}">Select city</option>
+                </select>
+            </form>
+    
+           
+            <form style="display:inline;" method="post" action="/inputPeriodSimilar">
+                <select id="Start Year" name="selectedStartYearSimilar" class="dropdown1" required>
+                    <option selected="selected" disabled="disabled" value="">Select Start year</option>
+                    <option th:each="year : ${startYears}" th:text="${year}" th:value="${year}" th:selected="${year == selectedStartYear}" required>Select Start Year</option>
+                </select>
+                <input type="number" name="inputPeriod" class="search-input" th:placeholder="${selectedPeriod}" aria-label="Enter a period" required>
+                <button style="cursor: pointer;" type="submit"class="add-time-period-btn">+ Select this region and period</button>
+            </form>
+            
+            
+        </div>
+    
+    <!-- Chosen Region and Time Period Section -->
+    <div class="chosen-region-time-period">
+        <h3>Chosen region and time period</h3>
+        <table class="region-time-period-table">
+            <thead>
+                <tr>
+                    <th>Country</th>
+                    <th>State</th>
+                    <th>City</th>
+                    <th>Period</th>
+                    <th>Average temperature</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="value : ${baseCountry}">
+                    <td th:text="${value.countryName}"> </td>
+                    <td th:text="${value.stateName}"> </td>
+                    <td th:text="${value.cityName}"> </td>
+                    <td th:text="${value.period}"> </td>
+                    <td th:if="${value.avg !='0.00'}" th:text="${value.avg}"> </td>
+                    <td th:if="${value.avg =='0.00'}" >Data not available </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+<!-- Countries with Similar Data Table -->
+<div class="countries-similar-data">
+    <h3>Countries with similar data</h3>
+    
+    <!-- Buttons and Sort Dropdown -->
+    <div class="table-controls">
+        <h2 style="float:left;" th:if="${similarSize == 0}" th:text="No similar data for region"> </h2>
+        <div class="buttons-group">
+            <form method="post" action="/limit">
+                <input style="width:200px" class="search-input" name="limit" type="number" id="numberinput" min="0" placeholder="Number of regions" >  </input>
+            <button class="world-view-btn" type="submit"> Submit </button>
+            </form>
+            
+            <form method="post" action="/clearData">
+                <button style="background-color: red;" class="world-view-btn" type="submit"> Clear Data </button>
+            </form>
+            
+        </div>
+    </div>
+    
+    
+    <!-- Table Responsive Wrapper -->
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>Country</th>
+                    <th>State</th>
+                    <th>City</th>
+                    <th>Period</th>
+                    <th>Average temperature</th>
+                    <th>Difference with Selected Region</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="similar : ${similarCountries}">
+                    <td th:text="${similar.countryName}"> </td>
+                    <td th:text="${similar.stateName}"> </td>
+                    <td th:text="${similar.cityName}"> </td>
+                    <td th:text="${similar.period}"> </td>
+                    <td th:text="${similar.avg}"> </td>
+                    <td th:if="${similar.temperatureDifference}"> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+</div>
+
+
+    
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Organisation</h4>
+                <ul>
+                    <li><a href="/">Overview</a></li>
+                    <li><a href="Mission.html">Mission</a></li>
+                    <li><a href="Resources.html">Resources</a></li>
+                    <li><a href="AboutUs.html">About us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Get help</h4>
+                <ul>
+                    <li><a href="FAQ.html#how-to-use-section">How it works</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                    <li><a href="Forecast.html">Forecast</a></li>
+                    <li><a href="AboutUs.html">Contact us</a></li>
+                    <li><a href="Payment.html">payment options</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Event</h4>
+                <ul>
+                    <li><a href="Event.html">Charity</a></li>
+                    <li><a href="Event.html">Blue Sea </a></li>
+                    <li><a href="Event.html">Green Globe</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>follow us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/satrmithanoi"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.rmit.edu.vn/vi"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/rmituniversityvietnam/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/school/rmit-university-vietnam/?originalSubdomain=vn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="updates-section">
+            <form>
+                <div style="color:white"><h3>Get update</h3> </div>
+                <input type="email" placeholder="Enter your email " required>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <p style="color: #e91e63;">© Copyright Team-HN-G03-COSC3056 2024. All Rights Reserved | Designed and Developed by Team-HN-G03-COSC3056</p>
+        </div>
+    </div>
+</footer>
+
+
+    <script>
+        function saveScrollPositionAndSubmit(selectElement) {
+            localStorage.setItem('scrollPosition', window.scrollY || document.documentElement.scrollTop);
+            selectElement.form.submit();
+        }
+        
+        window.onload = function() {
+            var savedScrollPosition = localStorage.getItem('scrollPosition');
+            if (savedScrollPosition) {
+                window.scrollTo(0, parseInt(savedScrollPosition));
+                localStorage.removeItem('scrollPosition');
+            }
+        }
+
+        function handleStateOrCityChange() {
+        // Call validateDropdowns to disable/enable the other dropdown
+        validateDropdowns();
+        
+        // Do not reset the dropdowns here; just ensure correct enable/disable behavior
+        }
+
+        function validateDropdowns() {
+            var stateSelect = document.querySelector('select[name="selectState"]');
+            var citySelect = document.querySelector('select[name="selectCity"]');
+            
+            // Disable or enable the other dropdown based on the current selection
+            citySelect.disabled = stateSelect.selectedIndex > 0;
+            stateSelect.disabled = citySelect.selectedIndex > 0;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var stateSelect = document.querySelector('select[name="selectState"]');
+            var citySelect = document.querySelector('select[name="selectCity"]');
+
+            // Call handleStateOrCityChange on change to handle enable/disable behavior
+            if (stateSelect) {
+                stateSelect.addEventListener('change', handleStateOrCityChange);
+            }
+
+            if (citySelect) {
+                citySelect.addEventListener('change', handleStateOrCityChange);
+            }
+
+            // Call validateDropdowns initially to set the correct state from the start
+            validateDropdowns();
+        });
+        </script>
+</body>
+</html>

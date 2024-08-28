@@ -1,0 +1,197 @@
+/* Reset margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff; /* Set the background color to white */
+    color: #333333; /* Dark text color for contrast */
+}
+
+.main-content {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+.search-input {
+    padding: 12px 10px; /* Increased padding to make the input box taller */
+    width: 15%; /* Take up the full width of the container */
+    border: 1px solid #ced4da; /* Border to match the dropdowns */
+    margin-bottom: 5px; /* Space below the input box */
+    box-sizing: border-box; /* Ensure padding is included in the total width/height */
+}
+
+.main-title {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.main-description {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #666666; /* Slightly lighter text color for description */
+}
+
+.add-time-period-section,
+.chosen-region-time-period,
+.countries-similar-data {
+    background-color: #ffffff; /* White background for sections */
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+}
+
+.add-time-period-section form,
+.chosen-region-time-period .data-display,
+.countries-similar-data .table-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Space elements evenly */
+    align-items: center;
+}
+
+.add-time-period-section form select,
+.add-time-period-section form button,
+.control-btn,
+.sort-dropdown select, button {
+    padding: 10px;
+    margin: 5px 0; /* Space above and below form items */
+    border: 1px solid #dddddd; /* Light grey border */
+    border-radius: 5px;
+    background-color: #ffffff; /* White background for form items */
+    display:inline;
+    cursor: pointer;
+}
+
+.add-time-period-section form button {
+    background-color: #007bff; /* Bootstrap blue for button background */
+    color: #ffffff; /* White text color for buttons */
+    border: none; /* No border for buttons */
+    cursor: pointer;
+}
+.table-controls {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.buttons-group {
+    display: flex;
+    gap: 10px; /* Add space between buttons */
+    margin-left: auto; /* Push the button group to the right */
+}
+
+
+
+.control-btn {
+    padding: 10px 20px;
+    background-color: #ffffff; /* Change the button background to white */
+    color: #333333; /* Dark text color for better contrast */
+    border: 1px solid #dddddd; /* Light grey border */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+.control-btn:hover {
+    background-color: #e8e8e8; /* Darken button background slightly on hover */
+}
+
+.sort-dropdown select {
+    background-color: #ffffff; /* White background for the dropdown */
+    color: #333333; /* Dark text color for the dropdown options */
+}
+
+.region-time-period-table,
+.table-responsive table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff; /* White background for tables */
+}
+
+.region-time-period-table th,
+.region-time-period-table td,
+.table-responsive th,
+.table-responsive td {
+    padding: 10px;
+    border: 1px solid #dddddd; /* Light grey border */
+    text-align: left;
+}
+
+.region-time-period-table th,
+.table-responsive th {
+    background-color: #f8f8f8; /* Very light grey background for table headers */
+}
+/* Sort dropdown */
+.sort-dropdown {
+    margin-left: 20px; /* Add some space before the sort dropdown */
+}
+
+.sort-dropdown label {
+    margin-right: 5px;
+    color: #666666; /* Label color */
+}
+
+.sort-dropdown select {
+    padding: 10px;
+    background-color: #ffffff; /* White background for the dropdown */
+    color: #333333; /* Dark text color for dropdown options */
+    border: 1px solid #dddddd; /* Light grey border */
+    border-radius: 5px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .header, .main-content, .footer {
+        padding: 10px;
+    }
+
+    .main-title {
+        font-size: 20px; /* Slightly smaller font size for main title */
+    }
+
+    .main-description {
+        font-size: 16px; /* Slightly smaller font size for description */
+    }
+
+    form, .table-responsive {
+        margin-top: 10px;
+    }
+
+    select, input[type="number"], input[type="submit"], button {
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+
+    .table-responsive th, .table-responsive td {
+        padding: 10px; /* Less padding for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .header, .main-content, .footer {
+        padding: 5px;
+    }
+
+    .main-title {
+        font-size: 18px; /* Even smaller font size for main title */
+    }
+
+    .main-description {
+        font-size: 14px; /* Even smaller font size for description */
+    }
+
+    select, input[type="number"], input[type="submit"], button {
+        padding: 6px;
+        margin-bottom: 6px;
+    }
+
+    .table-responsive th, .table-responsive td {
+        padding: 8px; /* Even less padding for extra small screens */
+    }
+}
